@@ -1,0 +1,55 @@
+
+{% block head %}
+{% include "_base.twig" %}
+{% endblock %}
+
+{% block body %}
+    {% include "partials/nav.twig" %}
+    <div class="container">
+    <h1>{{ page_h1 }}</h1>
+        <h5>{{ base_uri }} {{ baseurl }}</h5>
+
+        <p>{{ content | raw }}</p>
+        <div class="card">
+            <div class="card-body">
+                <form id="form-user" name="form-user" action="{{ path_for('user-create') }}" method="post">
+                    <div class="form-group row">
+                        <label for="username" class="col-sm-3 col-form-label">Username *</label>
+                        <div class="col-sm-9">
+                            <input type="text"  class="form-control" id="username" name="username" placeholder="Username" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="Password" class="col-sm-3 col-form-label">Password *</label>
+                        <div class="col-sm-9">
+                            <input type="password"  class="form-control" id="password" name="password" required placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="confirm" class="col-sm-3 col-form-label">Confirm Password *</label>
+                        <div class="col-sm-9">
+                            <input type="password"  class="form-control" id="confirm" name="confirm" required placeholder="Confirm Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="type" class="col-sm-3 col-form-label">Type *</label>
+
+                        <div class="col-sm-9">
+                            <select name="type" class="custom-select custom-select-lg" required>
+                                <option selected value="user">user</option>
+                                <option value="admin">admin</option>
+                                <option value="print">print</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-warning mb-2 u-create" id="u-create" value="Create"/>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+

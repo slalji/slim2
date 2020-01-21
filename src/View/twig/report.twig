@@ -1,0 +1,68 @@
+
+{% block head %}
+{% include "_base.twig" %}
+{% endblock %}
+
+{% block body %}
+
+    {% block contents %}
+        <div class="container">
+
+            <div class="card-header">
+                <span style="color:green"><h1>{{ page_h1 }}</h1></span>
+                Report
+            </div>
+        </div>
+        <div class="clear"><p></p></div>
+        <div class="form-group row">
+
+                            <div class="col-sm-12" >
+
+
+                                    <table class="row" style="border:1px dashed bisque; margin-left:50px;">
+                                        <tr>
+                                            <th>Campaign</th><th>ID</th><th>Voucher</th><th>Rate</th><th>Redeem on</th>
+                                        </tr>
+                                        {% for item in content %}
+                                        <tr>
+
+
+                                                <td class="col-xs-4">{{ item.title }}</td>
+                                                <td class="col-xs-4">{{ item.campaign }}</td>
+                                                <td class="col-xs-4">{{ item.qr }}</td>
+                                                <td class="col-xs-4">{{ item.rate }}</td>
+                                                <td class="col-xs-4">{{ item.redeem_date }}</td>
+
+
+
+                                            {% endfor %}
+                                        </tr></table>
+
+
+
+
+<style>
+    .col-xs-4{
+        padding:10px;
+        xmargin:10px;
+        border-left:1px #ccc solid;
+        width:200px;
+    }
+    th{
+        font-weight: bold;
+        text-align: center;
+        background:#ccc;
+        border:2px solid;
+    }
+</style>
+
+
+                            </div>
+                        </div>
+
+
+
+                </div>
+
+    {% endblock %}
+{% endblock %}

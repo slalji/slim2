@@ -1,0 +1,15 @@
+
+{% block head %}
+{% include "_base.twig" %}
+{% endblock %}
+
+{% block body %}
+    {% include "partials/nav.twig" %}
+    <div class="container">
+    <h1>{{ page_h1 }}</h1>
+
+        <p>{{ content | raw }}</p>
+    </div>
+
+{% endblock %}
+

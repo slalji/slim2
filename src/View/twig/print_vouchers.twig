@@ -1,0 +1,54 @@
+
+{% block head %}
+{% include "_base.twig" %}
+{% endblock %}
+
+{% block body %}
+
+{% block contents %}
+    <div class="container">
+
+<div>
+    {% if page - 1 >= 0 %}
+        <a href="{{base_url()}}/admin/print/print/{{ page - 1 }}?campaign={{ c_id }}&submit=print">pre</a>
+    {% endif %}
+    {{ admin }}
+    Page: {{ page }} of {{ total }}
+    {% if (page +1) < total %}
+
+        <a href="{{base_url()}}/admin/print/print/{{ page + 1 }}?campaign={{ c_id }}&submit=print">next</a>
+    {% endif %}
+</div>
+    </div>
+                    <div class="form-group row">
+
+                        <div class="col-sm-12" >
+
+                            {% for barcode in content %}
+                                <div class="row" style="border:1px dashed bisque; margin:50px;">
+
+                                    <div class="col-sm-4" style="border-right:1px dashed wheat; padding-top: 70px">
+
+                                        {{ barcode.img | raw }}<br>
+                                        <small><b>#{{ barcode.id | raw }}</b> <span class="voucher">{{ barcode.voucher|raw }}</span> {{ barcode.expiry }}</small>
+                                    </div>
+                                    <div class="col-sm-5" style="border:0px dashed wheat; align:center;font-size:18px; color:green; padding-top: 10px">
+                                        <h5  >KL Coffee Estate Berries 2020</h5>
+                                        <br>{{ barcode.img | raw }}<br>
+                                        <small><b>#<span class="id">{{ barcode.id | raw }}</b></span> <span class="voucher"> {{ barcode.voucher|raw }}</span> {{ barcode.expiry }}</small>
+                                    </div>
+                                </div>
+
+
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% block contents %}
+    <h1>{{ title }}</h1>
+    <h5>Hello {{ name }}!</h5>
+
+    <p>
+{{ content }}
+    </p>
+    <ul>{% for na in name %}
+
+        <li>{{ na }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

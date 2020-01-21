@@ -1,0 +1,45 @@
+
+{% block head %}
+{% include "_base.twig" %}
+{% endblock %}
+
+{% block body %}
+    {% include "partials/nav.twig" %}
+    <div class="container">
+    <h1 id="{{ id }}" style="color:red">{{ page_h1 }}</h1>
+        <div>{{ result|raw }}</div>
+        {% if (content) %}
+        <div class="card">
+            <div class="card-body">
+                {% set pattern='' %}
+                {% for key, value in content %}
+                    {% if (key == 'title') %}
+                    <p>Campaign : {{ value }}</p>
+                    {% elseif key == 'quantity' %}
+                    <p>Created {{ value }} vouchers </p>
+                    {% elseif key == 'prefix' %}
+                        {% set pattern = value %}
+                    {% elseif key == 'sufix' %}
+                        {% set pattern = pattern ~ '-********-' ~ value %}
+                    {% elseif key == 'dateTime' %}
+                        <p>On: {{ value  }}</p>
+                    {% elseif key == 'expiry' %}
+                        <p>Expires on: {{ value  }}</p>
+                    {% endif %}
+
+                {% endfor %} <p>of pattern :
+                {{ pattern }}</p>
+
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% if 'redeeming' in page_h1  %}
+
+        <div class="card-header">
+            <a class="btn btn-success" href="/slim2/www/redeem">redeem another</a>
+        </div>
+        </div>
+    {% endif %}
+{% endblock %}
+

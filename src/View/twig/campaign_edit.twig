@@ -1,0 +1,64 @@
+
+{% block head %}
+{% include "_base.twig" %}
+{% endblock %}
+
+{% block body %}
+    {% include "partials/nav.twig" %}
+    <div class="container">
+    <h1>{{ page_h1 }}</h1>
+
+        <div class="card">
+            <div class="card-body">
+                <form id="form-redeem" name="form-redeem" action="update" method="post">
+
+                    <div class="form-group row">
+                        <label for="Name" class="col-sm-2 col-form-label">Title *</label>
+                        <div class="col-sm-10">
+                            <input type="hidden"   class="form-control" id="id" name="id" value="{{ id }}" required>
+
+                            <input type="text"  readonly class="form-control" id="title" name="title" value="{{ content.title }}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="Prefix" class="col-sm-2 col-form-label">Prefix</label>
+                        <div class="col-sm-3">
+                            <input type="text"  readonly class="form-control" id="prefix" name="prefix" value="{{ content.prefix }}">
+                        </div>
+
+                        <label for="Sufix" class="col-sm-2 col-form-label">Sufix</label>
+                        <div class="col-sm-3">
+                            <input type="text"  readonly class="form-control" id="sufix" name="sufix" value="{{ content.sufix }}">
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label for="Rate" class="col-sm-2 col-form-label">Rate (Tsh)</label>
+                        <div class="col-sm-3">
+                            <input type="text"  class="form-control" id="rate" name="rate" value="{{ content.crate }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="expiry" class="col-sm-2 col-form-label">Created/Modified Date</label>
+
+                        <div class="col-sm-10">
+                            <input type="text"  readonly class="form-control" id="created_date" name="created_date" xvalue="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="expiry" class="col-sm-2 col-form-label">Expire Date *</label>
+
+                        <div class="col-sm-10">
+                            <input type="text"  class="form-control" id="expiry_date" name="expiry_date" value="{{ content.expiry_date }}">
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary mb-2 c-update" id="c-update" value="Update"/>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+

@@ -1,0 +1,93 @@
+
+{% block head %}
+{% include "_base.twig" %}
+{% endblock %}
+
+{% block body %}
+    {% include "partials/nav.twig" %}
+    <div class="container">
+
+        <h5>{{ base_uri }} {{ baseurl }}</h5>
+
+        <p>{{ content | raw }}</p>
+        {% if 'Redeemed' in page_h1  %}
+            <h1>{{ page_h1 }}</h1><div class="card-header">
+            <!--<span style="color:green">{{ result }}</span>-->
+                Voucher was Redeemed
+            </div>
+        {% endif %}
+        {% if 'Error' in page_h1  %}
+            <div class="card-header">
+
+                <span style="color:red"><h1>{{ page_h1 }}</h1> {{ result }}</span>
+            </div>
+        {% endif %}
+        <div class="card">
+            <div class="card-body">
+                <form id="form-create" name="form-create" action="voucher" method="post">
+                    <div class="form-group row">
+                        <label for="Name" class="col-sm-2 col-form-label">Voucher *</label>
+                        <div class="col-sm-10">
+                            <input type="text"  class="form-control" id="id" name="voucher" placeholder="pre-********-sub"  autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="created_date" class="col-sm-2 col-form-label">ID</label>
+
+                        <div class="col-sm-10">
+                            <input type="text"  readonly class="form-control" id="redeem_id" name="redeem_id" value="{{ redeem_id }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="created_date" class="col-sm-2 col-form-label">Date</label>
+
+                        <div class="col-sm-10">
+                            <input type="text"  readonly class="form-control" id="redeem_date" name="redeem_date" value="{{ redeem_date }}">
+                        </div>
+                    </div>
+
+                    <input type="submit" class="btn btn-warning mb-2 stop" id="reset"  name="submit"  value="Reset"/>
+
+                    <input type="submit" class="btn btn-success mb-2 v-redeem" name="submit" id="v-redeem" value="Redeem"/>
+
+
+
+
+                </form>
+                <div id="result">
+                    <hr>
+                    <h1 style="padding: 10px 0;border-top: 2px dashed black">Receipt</h1>
+
+                    <form action="stop" method="post">
+                        <table class="table">
+
+                            <tr>
+                                <th>Voucher</th>
+                                <th>Rate</th>
+                                <th>Notes</th>
+
+                            </tr>
+                            {% for result in results %}
+
+                            <tr>
+                                <td><input type=text value="{{ result.voucher }}" name="voucher[]">{{ result.voucher }}</td>
+                                <td><input type=text value="{{ result.rate }}" name="rate[]">{{ result.rate }}</td>
+                                <td><input type=text value="{{ result.msg }}" name="msg[]">{{ result.msg }}</td>
+
+                            </tr>
+                            {% endfor %}
+                            <tr><td><input type="submit" class="btn btn-danger mb-2 stop" id="stop"  name="submit"  value="Print Receipt"/></td></tr>
+
+                        </table>
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+

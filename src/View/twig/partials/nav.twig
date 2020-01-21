@@ -1,0 +1,27 @@
+<nav class="navbar navbar-light bg-light sticky-top justify-content-between">
+    <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="Bootstrap">
+        <svg height="30" width="200" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <a href="{{ path_for('home') }}" >
+                <text x="0" y="15" fill="green">KL Coffee Estate</text>
+            </a>
+        </svg>
+    </a>
+    {% if not admin  %}
+    <form class="form-inline" method="post" action="{{ path_for('sign') }}">
+        <input class="form-control mr-sm-2" type="text" name="username" placeholder="Username" aria-label="SignIn">
+        <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password" aria-label="SignIn">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign in</button>
+    </form>
+
+    {% elseif admin == 'print' %}
+        <div> <a href="{{ path_for('print') }}">print</a>   | <a href="{{ path_for('logout') }}">logout</a> ~
+            You are can print {{ admin }}
+        </div>
+    {% else %}
+        <div>
+            <a href="{{ path_for('campaign') }}">campaigns</a> | <a href="{{ path_for('listit') }}">list</a> | <a href="{{ path_for('redeem') }}">redeem</a>
+            | <a href="{{ path_for('print') }}">print</a>   | <a href="{{ path_for('logout') }}">logout</a> ~
+            You are logged in {{ admin }}
+        </div>
+    {% endif %}
+</nav>

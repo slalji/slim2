@@ -1,0 +1,35 @@
+
+{% block head %}
+{% include "_base.twig" %}
+{% endblock %}
+
+{% block body %}
+    {% include "partials/nav.twig" %}
+    <div class="container">
+        <h1  style="color:green">{{ page_h1 }}</h1>
+
+
+        <div class="card">
+
+                {% for item in content %}
+                    <div class="card-body row">
+                         <div class="col-md-4">{{ item.title }}</div>
+
+                    <div class="col-md-4"> {{ item.expiry_date }}</div>
+                    <div class="col-md-4"><a href="edit/{{ item.id }}"><button class="btn btn-primary">Edit</button></a></div>
+
+                    </div>
+                {% endfor %}
+
+        </div>
+
+    </div>
+    {% if 'Redeemed' in page_h1  %}
+
+        <div class="card-header">
+            <a class="btn btn-success" href="../../redeem">redeem another</a>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
+

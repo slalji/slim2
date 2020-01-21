@@ -1,0 +1,1056 @@
+/*
+|--------------------------------------------------------------------------
+| Styles for Resource Pages
+|--------------------------------------------------------------------------
+|
+| Indexes & Databases Portal
+|
+*/
+
+
+/*common styles*/
+#LibraryContent {
+    position: relative;
+    top: 0 !important;
+    left: 0 !important;
+}
+
+.grid {
+    width: 100%;
+}
+
+.grid a {
+    text-decoration: none;
+}
+.grid a:hover {
+    text-decoration: underline;
+}
+
+/*force pointer on "href" a tags (those with no href b/c of AJAX)*/
+.grid .href {
+    cursor: pointer;
+}
+
+.grid h1,
+.grid h1 a,
+.grid h2,
+.grid h3,
+.grid h4,
+.grid h5,
+.gird h6 {
+    color: #333;
+}
+
+.grid h1 {
+    margin: 20px 0 !important;
+}
+
+.grid img {
+    max-width: 100%;
+    vertical-align: baseline;
+    margin: 0 3px;
+}
+
+.grid form {
+    margin-bottom: 0;
+}
+
+/** Public Styles **/
+
+
+/*
+|--------------------------------------------------------------------------
+| Main Navigation & Header
+|--------------------------------------------------------------------------
+|
+| Library CLF and top-most content
+|
+*/
+
+/*adds selected state to Search Collections main navigation link*/
+#ubc7-unit-menu #search-nav > .btn-group > a,
+#ubc7-unit-menu #search-nav > .btn-group,
+#ubc7-unit-menu #search-nav > .btn-group .btn {
+    background-color: transparent;
+}
+#ubc7-unit-menu #search-nav > .btn-group > a,
+#ubc7-unit-menu #search-nav > .btn-group {
+    background-color: #D7E0E7;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125) inset;
+}
+#ubc7-unit-menu #search-nav:hover > .btn-group > a,
+#ubc7-unit-menu #search-nav:hover > .btn-group,
+#ubc7-unit-menu #search-nav:hover > .btn-group .btn {
+    background-color: #002145;
+}
+
+/*Access Problems? colorbox image itself*/
+.grid .access {
+    margin: 8px 40px 0 0;
+    float: right;
+    border: 1px solid;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    background: #aaa;
+    color: #fff;
+    position: relative;
+
+}
+.grid .access:hover{
+    text-decoration: none;
+    color: #666;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.ie7 .grid .access {
+    margin-left: -100px;
+}
+
+/*open access/restrictions line*/
+.grid p.quiet {
+    font-size: 15px;
+    color: #777;
+    margin: 0 0 20px 0;
+    line-height: 140%;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Search Box
+|--------------------------------------------------------------------------
+|
+| Simple and advanced search, title results drop-down
+|
+*/
+
+
+/*lighter box color for div*/
+.grid .box {
+    background-color: #f9f9f9;
+    padding-bottom: 0;
+}
+.ie7 .grid .box {
+    padding-bottom: 20px !important;
+    margin-bottom: 40px;
+}
+.grid .box .row-fluid [class*="span"] {
+    min-height: 0;
+}
+
+/*search form relative positioning for absolute positioned dropdown results list*/
+.grid #resources-search {
+    position: relative;
+}
+
+/*main text input for search*/
+.grid #search {
+    height: auto;
+    margin: 0 0 5px 0; /*force styles in admin (keep LTK from controlling)*/
+}
+
+#search-results .button {
+    padding: 4px 12px;
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid #99BB99;
+    background: #009900;
+}
+
+/*advanced search ("more options") p tag*/
+.grid .options {
+    margin: 10px 0 0 0;
+    line-height: 110%;
+    text-align: left;
+}
+/*advanced search = link in more options tag*/
+.grid .options .advSearch {
+    float: none;
+    font-weight: bold;
+    font-size: 11px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+/*when open, change toggle icon*/
+.grid .active .advSearch .toggle-icon {
+    background-position: -13px 0;
+}
+
+/*overwrite UI styles for modifier labels to increase size*/
+.grid .modifier label {
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+/*ie7 modifiers need to be smaller*/
+.ie7 .grid .advanced-options .modifier label {
+    margin: 0 5px 0 0;
+}
+
+.grid label {
+    float: none;
+}
+
+.grid input[type="radio"] + span {
+    vertical-align: middle;
+}
+
+/*"title contains" live search dropdown ul*/
+.grid #results {
+    display: none;
+    position: absolute;
+    left: -2.9%;
+    top: 53%;
+    max-height: 200px;
+    max-width: 438px;
+    overflow: auto;
+    text-align: left;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid #888;
+    list-style: none;
+}
+.ie7 .grid #results {
+    top: 57%;
+}
+.grid #results li {
+    font-size: 13px;
+    padding: 0 2px;
+    margin: 4px 0;
+    cursor: pointer;
+}
+.grid #results li:hover {
+    background-color: #eee;
+}
+
+/*form submit button smaller*/
+.grid .button.medium {
+    padding: 5px 28px;
+    margin: 2px 0 5px 0;
+}
+.ie7 .grid .button.medium {
+    padding: 6px 18px !important;
+}
+
+/*advanced options fieldset*/
+.grid .advanced-options {
+    padding-top: 20px;
+    margin-top: 5px;
+    border-top: 1px solid #eee;
+}
+
+/*div for loading icon*/
+.grid #loading {
+    display: none;
+    padding-top: 15px;
+    text-align: center;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Browse Sidebar
+|--------------------------------------------------------------------------
+|
+| By title, subject and trial
+|
+*/
+
+
+/*contains full browse sidebar on index page*/
+.grid .browse-column {
+    position: relative;
+    padding-top: 62px;
+    margin-bottom: 20px;
+}
+
+/*sidebar headings*/
+.grid .browse-column h2 {
+    font-family: Georgia, Times, "Times New Roman", serif;
+    font-weight: normal;
+    font-size: 19px !important;
+    line-height: 120%;
+    margin: 0 0 12px 0;
+}
+
+/*subject browse section div (to mimic select box)*/
+.grid #subject {
+    overflow: auto;
+    height: 300px;
+    margin-bottom: 25px;
+    padding-right: 11%;
+    font-size: 13px;
+    border: 1px solid #eee;
+}
+/*the "option" list*/
+.grid #subject ul {
+    margin: 0;
+    list-style: none;
+}
+.grid #subject ul li {
+    text-indent: -6px;
+    padding: 4px 0 4px 12px;
+    width: 100%;
+    color: #000099;
+    line-height: 160%;
+    cursor: pointer;
+}
+.grid #subject ul .option-selected {
+    background-color: #eee;
+}
+
+/*a-z jump scroll for small screens*/
+.grid .azlist {
+    position: absolute;
+    top: 60px;
+    right: 7.5%;
+    width: 25px;
+    height: 530px;
+}
+.grid .azlist .azletter {
+    display: block;
+    margin-bottom: 1px;
+    font-weight: bold;
+}
+.grid .azscroll {
+    margin: 10px 0 8px 6px;
+    display: block;
+    width: 90%;
+    font-weight: bold;
+    border-bottom: 1px dotted #ccc;
+}
+
+/*title browse section*/
+.grid .browse-column .pagination {
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+.grid .browse-column .pagination button {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #333;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+.ie7 .grid .browse-column .pagination button {
+    padding: 2px 4px;
+    margin: 4px;
+}
+.grid .browse-column .pagination button:hover {
+    background-color: #ddddff;
+    border-color: #999;
+}
+.grid .browse-column .pagination button.selected,
+.grid .pagination.branches-page a.selected {
+    border: 1px solid #999;
+}
+
+/*other browse section*/
+.grid .browse-column ul li {
+    font-size: 13px;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Table Area Extras
+|--------------------------------------------------------------------------
+|
+| Notes & tips
+|
+*/
+
+/*tip = search results note box, note = special access/mobile access instructions*/
+.grid .note,
+.grid .tip {
+    padding: 10px !important;
+    margin: 5px 0 !important;
+}
+.grid .tip {
+    font-size: 13px;
+    margin: 20px 0 !important;
+}
+
+/*for clear result button*/
+.grid .tip .button,
+#LTKbody .grid .tip .button {
+    margin: 0 0 5px 5px;
+    float: right;
+    font-weight: normal;
+    text-decoration: none;
+    color: #333;
+    font-size: 100% !important;
+    line-height: 115% !important;
+}
+
+/*for lists in any access notes*/
+.grid .note ol,
+.grid .note ul {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+}
+.grid .note ol {
+    margin-left: 22px;
+}
+
+/*paragraphs in notes or tips*/
+.grid .note p,
+.grid .tip p {
+    margin: 8px 0;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Table
+|--------------------------------------------------------------------------
+|
+| For displaying brief display, full display and feedback form
+|
+*/
+
+/*.resource = resource results table, individual resource table*/
+.resources,
+.resource_feedback {
+    clear: both;
+    font-size: 12px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 4px 0 #ddd;
+}
+
+/*table headings*/
+.resources thead {
+    border-bottom: 1px solid #ccc;
+}
+.resources th {
+    font-size: 16px;
+    color: #333;
+    padding: 8px 5px 8px 12px;
+    background-color: #D9E4EC;
+    text-align: left;
+    text-shadow: 0 1px 0 #ddd;
+}
+.resource_feedback th {
+    color: #fff;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    font-weight: normal;
+    padding: 8px 5px 8px 12px;
+    background-color: #666;
+    text-align: left;
+    padding: 8px 4px 8px 4px;
+    vertical-align: bottom;
+    text-transform: none;
+}
+
+/*question mark icon for full text headings*/
+.resources tr th span.colorbox,
+.resources tr td span.colorbox {
+    width: 15px;
+    float: right;
+    margin: 1px 15px 0 0;
+}
+/*overwrite CLF colorbox defaults*/
+.resources tr th .colorbox a,
+.resources tr td .colorbox a {
+    height: auto !important;
+    width: 15px;
+    text-indent: 0;
+}
+
+/*table info*/
+.resources tr td {
+    min-width: 60px;
+    padding: 15px 12px;
+}
+.resource_feedback td {
+    padding: 8px 4px 8px 4px;
+    border-bottom: 1px solid #ccc;
+    vertical-align: top;
+}
+/*blue rows = odd*/
+.resources tr.odd td {
+    background-color: #F5F8FA;
+}
+/*white rows = even*/
+.resources tr.even td {
+    background-color: #fff;
+}
+
+/*for displaying the td default view*/
+.resources tr .default {
+    padding-bottom: 30px;
+}
+.resources tr .default h3 {
+    font-size: 18px !important;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    margin: 10px 0 0 0;
+}
+.resources tr .default p,
+.resources tr .default ul {
+    font-size: 16px !important;
+}
+.resources tr .default ul {
+    margin-bottom: 0;
+}
+
+/*open access/restricted access icons in divs*/
+.resources .access_img {
+    text-align: center;
+}
+.resources .access_img p {
+    margin-top: 5px;
+}
+
+/*open access/restricted access icon span tooltips*/
+.resources .res-tooltip {
+    position: relative;
+    cursor: help;
+    text-decoration: none;
+    line-height: 130%;
+}
+.resources .res-tooltip span {
+    position: absolute;
+    margin-left: -999em;
+}
+.resources .res-tooltip:hover span {
+    left: 2em;
+    bottom: 2em;
+    width: 150px;
+    padding: 10px;
+    margin-left: 0;
+    font-size: 11px;
+    background-color: #FFFFBB;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px 0 #ddd;
+    z-index: 99;
+}
+
+/*permitted use button */
+.resources .permittedUses.small {
+    font-size: 100%;
+    font-weight: normal;
+    margin-top: 15px;
+}
+
+/*permitted uses box div (brief display)*/
+.permittedUsesDialog {
+    display: none;
+    font-size: 11px;
+    line-height: 130%;
+    width: 250px;
+}
+
+/*span used for permitted use coloured answers (brief and full displays)*/
+.permittedUsesDialog span,
+.resources span.red,
+.resources span.green,
+.resources span.orange {
+    font-weight: bold;
+    background: none; /*overwrite UI Library*/
+    border: none; /*overwrite UI Library*/
+}
+.resources span.red:hover,
+.resources span.green:hover,
+.resources span.orange:hover {
+    border: none;
+    box-shadow: none;
+}
+.permittedUsesDialog .red,
+.resources span.red {
+    color: red;
+}
+.permittedUsesDialog .green,
+.resources span.green {
+    color: green;
+}
+.permittedUsesDialog .orange,
+.resources span.orange {
+    color: orange;
+}
+
+.permittedUsesDialog p {
+    margin: 0;
+}
+
+/*bold tds for full display (left-hand column)*/
+.resources tr .bold {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/*further full text td styling for brief display*/
+.resources tr .fulltext.brief {
+    text-align: center;
+    font-size: 13px;
+}
+
+/*float the colorbox trial feedback links*/
+.grid .colorbox.feedback {
+    float: left;
+    width: auto;
+}
+
+/*trial image lines up differently to align with link*/
+.resources td .trial {
+    float: left;
+    margin-top: -6px;
+}
+
+/*resource title = resource name in both tables*/
+.resources td .resource-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+/*alternate title = alternate names in full display*/
+.resources td .alternate-title {
+    font-size: 14px;
+    margin: 0;
+}
+
+/*increase green "Connect to Resource" full display button*/
+.resources td p .green.button {
+    font-size: 13px;
+    margin: 10px 0;
+}
+
+.resources td p {
+    line-height: 140%;
+    margin: 10px 0;
+}
+
+/*the "more info" link in the brief display*/
+.resources td .more-info {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/*new search link in the brief display for single-column view*/
+.resources td .new-search {
+    font-size: 15px;
+    font-weight: bold;
+}
+.resources td .new-search a {
+    margin: 15px 0 5px 0;
+    display: block;
+    color: #333;
+}
+.branches-table .resources td .new-search {
+    display: none !important;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Admin Styles
+|--------------------------------------------------------------------------
+|
+| For all admin pages and forms
+|
+*/
+
+/* Just so we can get a more beautiful, unambiguous horizontal rule between sections (from ui.library.ubc.ca/css/styles.css) */
+#UbcContent hr.nymphette  { background: url('../images/nymphette.gif') no-repeat #ffffff!important; height:37px!important; margin-left:-20px; border:none!important; clear:both; }
+
+#adminTopNav {
+
+}
+
+.topNavSelected {
+    font-weight:bold;
+}
+
+.grid select, .grid input {
+    font-size: .95em;
+}
+
+.grid textarea {
+    font-size: 1em;
+    font-family: 'Arial Unicode MS',Arial,Sans-Serif;
+}
+
+/* does not seem to work */
+.mceEditor #tinymce.mceContentBody {
+    font-size: 14px;
+    font-family: 'Arial Unicode MS',Arial,Sans-Serif;
+}
+
+.grid fieldset{
+    padding:3px 0 3px 0;
+    margin-top:0em;
+    border:none;
+}
+
+.grid .required {
+    color: #333333;
+}
+
+.grid .fieldQuestion {
+    font-weight:bold;
+}
+
+.hasPlaceholder {
+    color: #777;
+}
+
+.grid .horizontal label {
+    font-weight:normal;
+}
+
+table.resource_feedback {
+    border-collapse: collapse;
+}
+
+table.resource_feedback td {
+    border: #cccccc solid 1px;
+}
+
+table.resource_feedback th {
+    border: #ffffff solid 1px;
+}
+
+.grid h2 a { color:#333333; }
+#resources_admin_home h2 { font-size: 1.5em; }
+#resources_admin_home h3 { font-size: 1.3em; }
+.grid label.required:after { color: #ed1c24; content: " -required-"; font-variant: small-caps; }
+.grid input[type="text"] + .sublabel { font-size: 13px; }
+.grid textarea+label.sublabel, .grid select+label.sublabel, .grid span+label.sublabel, .grid input[type="button"]+label.sublabel, .grid input[type="checkbox"]+label.sublabel {text-transform:uppercase; margin: -3px 0 8px 1px; font-size:13px; color:#666666; }
+.grid span+label.sublabel { margin-top:5px; }
+.grid input[type="radio"] + span { display: inline; }
+.grid .message { margin-bottom: 20px; }
+.grid .pale { color:#999999; }
+.grid .padded-top { padding-top: 10px;}
+.grid .padded-bottom { padding-bottom: 10px; }
+.grid .unpadded { padding:4px; }
+label.midlabel { font-size: .92em;}
+
+.errorDiv {   -webkit-box-shadow: 0 1px 0px rgba(0,0,0,.1), inset 0 1px 0px rgba(255,255,255,.1);
+    -moz-box-shadow: 0 1px 0px rgba(0,0,0,.1), inset 0 1px 0px rgba(255,255,255,.1);
+    box-shadow: 0 1px 0px rgba(0,0,0,.1), inset 0 1px 0px rgba(255,255,255,.1);
+    background:#fbb; border: 1px solid #b99!important; padding: 0.3em 0px 0.3em 0.3em; margin-bottom: 4px; }
+
+#LTKContent .visible-phone {
+    display: none;
+}
+#LTKContent .colorbox a {
+    display: inline;
+    background: none;
+}
+#LTKContent #search-results .button {
+    font-weight: bold;
+    color: #fff;
+}
+#LTKContent input {
+    height: auto;
+}
+
+/* override ltk.css and admin.css button styles with those from library-ui.css */
+#LTKbody .grid .button:hover {
+    text-decoration: none;
+    /*grey is the default color*/
+    border: solid 1px #888;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3), inset 0 0 3px rgba(255,255,255,0.4);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.3), inset 0 0 3px rgba(255,255,255,0.4);
+    box-shadow: 0 1px 3px rgba(0,0,0,.3), inset 0 0 3px rgba(255,255,255,0.4);
+    cursor: pointer;
+}
+#LTKbody .grid .button:active {
+    border:solid 1px #77f;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+#LTKbody .grid .button.large {
+    font-size: 16px;
+    line-height: 32px;
+    padding: 5px 25px;
+}
+#LTKbody .grid .button.medium {
+    font-size: 12px;
+    padding: 5px 15px;
+}
+#LTKbody .grid .button.small {
+    font-size: 11px;
+    padding: 2px 9px;
+}
+
+#LTKbody .grid .blue:hover {
+    border: solid 1px #444;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3), inset 0 0 3px rgba(255,255,255,0.4);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.3), inset 0 0 3px rgba(255,255,255,0.4);
+    box-shadow: 0 1px 3px rgba(0,0,0,.3), inset 0 0 3px rgba(255,255,255,0.4);
+    color: #d9eef7;
+    background: #0D7AFF;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0D7AFF), to(#0073FF));
+    background: -webkit-linear-gradient(top,  #0D7AFF,  #0073FF);
+    background: -moz-linear-gradient(top,  #0D7AFF,  #0073FF);
+    background: -ms-linear-gradient(top,  #0D7AFF,  #0073FF);
+    background: -o-linear-gradient(top,  #0D7AFF,  #0073FF);
+    background: linear-gradient(top,  #0D7AFF,  #0073FF);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0D7AFF', endColorstr='#0073FF');
+}
+#LTKbody .grid .blue:active {
+    border:solid 1px #c44;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: #d9eef7;
+    background: #0D7AFF;
+    background: -webkit-gradient(linear, left top, left bottom, from(#0D7AFF), to(#0073FF));
+    background: -webkit-linear-gradient(top,  #0D7AFF,  #0073FF);
+    background: -moz-linear-gradient(top,  #0D7AFF,  #0073FF);
+    background: -ms-linear-gradient(top,  #0D7AFF,  #0073FF);
+    background: -o-linear-gradient(top,  #0D7AFF,  #0073FF);
+    background: linear-gradient(top,  #0D7AFF,  #0073FF);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0D7AFF', endColorstr='#0073FF');
+}
+#LTKbody .grid .red-text { color: #ed1c24; }
+#LTKbody .grid .red:hover {
+    border: solid 1px #444;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.3), inset 0 0 3px rgba(255,255,255,0.4);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.3), inset 0 0 3px rgba(255,255,255,0.4);
+    box-shadow: 0 1px 3px rgba(0,0,0,.3), inset 0 0 3px rgba(255,255,255,0.4);
+    color: #faddde;
+    background: #ed1c24;
+    background: -webkit-gradient(linear, left top, left bottom, from(#DD4A4E), to(#DB3C40));
+    background: -webkit-linear-gradient(top, #DD4A4E,  #DB3C40);
+    background: -moz-linear-gradient(top,  #DD4A4E,  #DB3C40);
+    background: -ms-linear-gradient(top,  #DD4A4E,  #DB3C40);
+    background: -o-linear-gradient(top,  #DD4A4E,  #DB3C40);
+    background: linear-gradient(top,  #DD4A4E,  #DB3C40);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#DD4A4E', endColorstr='#DB3C40');
+}
+#LTKbody .grid .red:active {
+    border:solid 1px #44f;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    color: #faddde;
+    background: #ed1c24;
+    background: -webkit-gradient(linear, left top, left bottom, from(#DD4A4E), to(#DB3C40));
+    background: -webkit-linear-gradient(top, #DD4A4E,  #DB3C40);
+    background: -moz-linear-gradient(top,  #DD4A4E,  #DB3C40);
+    background: -ms-linear-gradient(top,  #DD4A4E,  #DB3C40);
+    background: -o-linear-gradient(top,  #DD4A4E,  #DB3C40);
+    background: linear-gradient(top,  #DD4A4E,  #DB3C40);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#DD4A4E', endColorstr='#DB3C40');
+}
+
+
+/* green */
+#LTKbody .grid .green {
+    color: #e8f0de;
+    border: solid 1px #538312;
+    background: #7db72f;
+    background: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#5F911A));
+    background: -webkit-linear-gradient(top,  #7db72f,  #5F911A);
+    background: -moz-linear-gradient(top,  #7db72f,  #5F911A);
+    background: -ms-linear-gradient(top,  #7db72f,  #5F911A);
+    background: -o-linear-gradient(top,  #7db72f,  #5F911A);
+    background: linear-gradient(top,  #7db72f,  #5F911A);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f', endColorstr='#5F911A');
+}
+#LTKbody .grid .green:hover {
+    border: solid 1px #444;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.3), inset 0 0 3px rgba(255,255,255,0.4);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.3), inset 0 0 3px rgba(255,255,255,0.4);
+    box-shadow: 0 1px 3px rgba(0,0,0,.3), inset 0 0 3px rgba(255,255,255,0.4);
+}
+#LTKbody .grid .green:active {
+    border:solid 1px #f44;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+/* datepicket override */
+.ui-datepicker-calendar thead th {
+    background-color: #666666;
+    color: #ffffff;
+}
+
+/* bsmselect overrides */
+.bsmListItem { background: #f3f3f3; }
+.bsmListItem:hover { background-color: #f9f9f9; }
+
+/* NobleCount styles */
+#brief_description_count { border: solid 1px #cccccc; padding: 0 3px 0 3px;}
+.go_green { color: #197519; font-weight: bold; font-size: 104%;  }
+.go_red { color: #ed1c24; font-weight: bold; font-size: 114%;  }
+.go_red_message {  color: #ed1c24; font-size: 114%; background-color: #FFBBBB; border: solid 1px #cccccc; padding: 0 3px 0 3px; margin-left:10px;}
+
+/* TinyMCE styles */
+.mceEditor { float:left; }
+.mceToolbarTop { white-space: normal }
+
+
+/*
+|--------------------------------------------------------------------------
+| Media Queries
+|--------------------------------------------------------------------------
+|
+| For handling multiple screen sizes
+|
+*/
+
+
+@media (max-width: 75em) { /* 1200 / 16 */
+
+    .grid #results {
+        left: -3.7%;
+    }
+
+}/* 75em */
+
+@media (max-width: 61.2em) { /* 979 / 16 */
+
+    .grid .breadcrumb {
+        padding-top: 5px;
+    }
+    .grid .breadcrumb,
+    .grid .breadcrumb li {
+        line-height: 24px;
+    }
+
+    .grid .button.medium {
+        padding: 5px 15px;
+    }
+
+    .grid .options {
+        margin: 8px 0;
+        padding-left: 20px;
+        text-indent: -20px;
+    }
+    .grid .options .advSearch {
+        white-space: normal;
+    }
+
+    .grid #results {
+        top: 51.7%;
+        left: -4%;
+    }
+
+    .resources tr th span.colorbox,
+    .resources tr td span.colorbox {
+        margin-right: 10px;
+    }
+
+    .browse-column .pagination button,
+    .pagination.branches-page a {
+        display: inline-block;
+        line-height: 14px;
+        margin: 6px 4px;
+        padding: 8px;
+    }
+
+    .grid .browse-column ul li,
+    .grid .default ul li {
+        line-height: 18px;
+        margin-bottom: 14px;
+    }
+    .grid .browse-column ul li {
+        font-size: 15px;
+    }
+
+}/* 61.2em */
+
+@media (max-width: 47.9em) { /* 767 / 16 */
+
+    .grid .jump {
+        margin-top: 0;
+        text-align: right;
+    }
+
+    .grid .access-problems {
+        float: left;
+        margin: 0 5px 0 0
+    }
+
+    .grid #resources-search .span10 fieldset {
+        margin-bottom: 0;
+    }
+
+    .grid #resources-search .span2 {
+        text-align: center;
+    }
+
+    .grid .button.medium {
+        margin-top: 10px;
+        padding: 12px 16px;
+    }
+
+    .grid .options {
+        margin-top: 0;
+        text-align: right;
+    }
+
+    .grid #results {
+        top: 37%;
+        left: -3.7%;
+    }
+
+    .grid .browse-column {
+        padding: 20px 0;
+    }
+
+    .grid #subject {
+        width: 85%;
+        height: 550px;
+    }
+    .grid #subject ul li {
+        width: 90%;
+    }
+
+    .grid .top-border {
+        padding-top: 10px;
+        border-top: 1px solid #eee;
+    }
+
+    .resources td p,
+    .resources td .more-info {
+        font-size: 14px;
+    }
+
+}/* 47.9em */
+
+@media (max-width: 30em) { /* 480 / 16 */
+
+    /* keep iPhone from zooming in */
+    #resources-search select,
+    #resources-search input[type="text"] {
+        font-size: 16px;
+    }
+
+    .grid .hide-column {
+        display: none;
+    }
+
+    .resources .res-tooltip:hover span {
+        left: -10em;
+        bottom: 2.5em;
+    }
+
+}/* 30em */
+
+@media (max-width: 420px) { /* 420 / 16 */
+
+    .grid .options {
+        margin-top: 10px;
+    }
+    .grid .options .advSearch {
+        font-size: 13px;
+    }
+
+    .grid #results {
+        top: 35.5%;
+        left: -8%;
+    }
+
+}/* 26.25em */

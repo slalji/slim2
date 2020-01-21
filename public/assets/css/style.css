@@ -1,0 +1,25 @@
+
+.form {
+    padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: .2rem;
+}
+label{
+    font-weight:bold;
+}
+.voucher{
+    font-family: "monospace";
+}
+.id{
+    color:green;
+}
+.title{
+    font-family: '';
+    font-size:22px;
+    color:blue;
+}
+.col{
+    padding:15px !important;
+}
+
