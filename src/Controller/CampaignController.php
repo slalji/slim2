@@ -61,9 +61,14 @@ class CampaignController extends Controller
 		$this->view = $this->container->get('view');
 		$this->pdo = $this->container->get('db');
 		$params = $request->getParams();
-		var_dump('stop');
-		var_dump($params);
-		die;
+//		var_dump('stop');
+//		var_dump($params);
+//		var_dump($_SESSION['cart']);
+//		var_dump(__FILE__.' '.__LINE__);
+//
+//		/**print receipt**/
+//
+//		die;
 /* from receipt where id=xx (session?)
 show on page list
 vouchers
@@ -72,13 +77,13 @@ header id and date
 print button
 */
 
-
 		$page_data = [
-			'page_h1' => 'Campaign',
-			'content' => '<p>Create New Campaign.</p>',
-			'admin' => $_SESSION['auth']
+			'page_h1' => 'Voucher Receipt',
+			'results' => $_SESSION['cart'],//['voucher'=>$params['voucher'],'rate'=>0,'msg'=>''],
+			'redeem_id' => $_SESSION['redeem_id'],
+			'redeem_date' => $_SESSION['redeem_date']
 		];
-		return $this->view->render($response, 'receipt.twig', $page_data);
+		return $this->view->render($response, 'redeem.twig', $page_data);
 	}
 
     /**
@@ -379,6 +384,7 @@ print button
         $this->view = $this->container->get('view');
 				$params = $request->getParams();
 
+
 			if($params['submit'] == 'Reset'){
 
 				return $response->withRedirect('./');
@@ -386,10 +392,13 @@ print button
 
         elseif ($params['submit'] == 'Stop'){
         	var_dump('clicked stop');
-        	var_dump($request->getParams()); die();
-		}
-		session_start();
-		$v = explode('-', $params['voucher']);
+        	var_dump($request->getParams());
+        	var_dump(__FILE__.' '.__LINE__);
+
+        	die();
+				}
+				session_start();
+				$v = explode('-', $params['voucher']);
 
 		
         //$password = "5xKu1WjoEJj4qptK";
@@ -398,14 +407,13 @@ print button
 
 					try {
 							$updated = $class->redeemVoucher($result);
+
 							$msg = json_decode($updated)->message;
 							$rate = json_decode($updated)->rate;
 
-							$key = 	array_search($params['voucher'],$v);
+							$_SESSION['cart'][]=['voucher'=>$params['voucher'],'rate'=>$rate,'msg'=>$msg];
 
 
-							if (!$key )
-								$_SESSION['cart'][]=['voucher'=>$params['voucher'],'rate'=>0,'msg'=>$msg];
 
 							$page_data = [
 								'page_h1' => 'Voucher Redeemed',
@@ -414,14 +422,17 @@ print button
 								'redeem_date' => $params['redeem_date']
 							];
 
+							$_SESSION['redeem_id']=$params['redeem_id'];
+							$_SESSION['redeem_date']=$params['redeem_date'];
+
 							return $this->view->render($response, 'redeem.twig', $page_data);
 
 
 					}
 					catch (\Exception $e) {
-						var_dump($e->getMessage()); die;
+						return $e->getMessage();
 
-						if ($_SESSION['cart']){
+						/*if ($_SESSION['cart']){
 							//var_dump($_SESSION['cart']);
 							$key = array_search($params['voucher'], array_column($_SESSION['cart'], 'voucher'));
 
@@ -438,7 +449,7 @@ print button
 							'redeem_date' => $params['redeem_date']
 						];
 
-						return $this->view->render($response, 'redeem.twig', $page_data);
+						return $this->view->render($response, 'redeem.twig', $page_data);*/
 					}
     }
 }

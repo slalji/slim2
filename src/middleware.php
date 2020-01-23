@@ -42,7 +42,7 @@ class AuthMiddleware  {
 				session_start();
 					$_SESSION['user'] = $username;
 					$_SESSION['auth'] = $check;
-					$_SESSION['time'] = time()+3600;
+					$_SESSION['time'] = time()+1000;
 
 					return true;
 				}

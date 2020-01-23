@@ -72,6 +72,7 @@ class Campaign
                 $length = (int)$params['quantity'];
                 $campaign = $params['c_id'];
                 $rate = $params['rate'];
+								$created_date = $params['created_date'];
                 if ($length <= 0)
                     throw \Exception('Error, quantity must be greater than zero');
 
@@ -81,13 +82,14 @@ class Campaign
                     $token .= self::getToken();
                     $token .= isset($params['self']) ? $params['self'] : '';
 
-                    $sql = "INSERT INTO vouchers (campaign,voucher,rate) VALUES (:campaign,:voucher,:rate)";
+                    $sql = "INSERT INTO vouchers (campaign,voucher,rate,created_date) VALUES (:campaign,:voucher,:rate)";
 										$stmt = $this->conn->prepare($sql);
 
 
 										$stmt->bindValue( "campaign", $params['c_id'], PDO::PARAM_STR );
                     $stmt->bindValue( "voucher", $token, PDO::PARAM_STR );
 										$stmt->bindValue( "rate", $rate, PDO::PARAM_INT );
+										$stmt->bindValue( "created_date", $created_date, PDO::PARAM_STR );
 										$stmt->execute();
                 }
 
@@ -111,59 +113,65 @@ class Campaign
 			$voucher = $params['voucher'];
 			$full_voucher = $params['prefix'].'-'.$params['voucher'].'-'.$params['sufix'];
 
+
+
 			$result = $this->voucher_exists($full_voucher);
 
 //
 			if(json_decode($result)->code == 202)
-				return  json_encode(['code' => 202, 'message' =>' Voucher Already redeemed ']);
+				return  json_encode(['code' => 202,  'rate'=>0,'message' =>' Voucher Already redeemed ']);
 
 			elseif(json_decode($result)->code == 405)
-				return json_encode(['code'=>405,'message'=>'Voucher expired: ' . $params['voucher']]);
+				return json_encode(['code'=>405,'rate'=>0, 'message'=>'Voucher expired: ' . $params['voucher']]);
 
 			elseif(json_decode($result)->code == 404)
-				return json_encode(['code'=>404,'message'=>'Voucher expired: ' . $params['voucher']]);
+				return json_encode(['code'=>404, 'rate'=>0,'message'=>'Voucher expired: ' . $params['voucher']]);
 
 
 
 
         try {
 
-					$sql = "SELECT * from vouchers v join campaign c on c.id = v.campaign where v.voucher = '$voucher' ";
+					/*$sql = "SELECT c.rate from vouchers v join campaigns c on c.id = v.campaign where v.voucher = '$voucher' ";
 					$stmt = $this->conn->prepare( $sql );
 					$stmt->execute();
-					$result = $stmt->fetchAll( PDO::FETCH_ASSOC );
+					$res_rate = $stmt->fetchAll( PDO::FETCH_ASSOC );
+					//var_dump($rate);
+					$res_rate = $res_rate[0];
+					$rate = $res_rate['rate'];
+					var_dump($rate['rate']);
+					var_dump(__FILE__.''.__LINE__);
+					die;*/
 
+					/*Get rate from rates table*/
+					//$sql_res="SELECT * FROM `vouchers` v JOIN rates r on v.campaign = r.campaign WHERE v.voucher='$voucher' and r.created_date <= v.created_date order by r.created_date DESC LIMIT 1";
+					$sql_res="SELECT r.rate FROM `vouchers` v JOIN rates r on v.campaign = r.campaign WHERE v.voucher='$voucher' and r.created_date <= v.created_date order by r.created_date DESC LIMIT 1";
+					$stmt_res = $this->conn->prepare( $sql_res );
+					$stmt_res->execute();
+					$result = $stmt_res->fetchAll( PDO::FETCH_ASSOC );
 
 					$result = $result[0];
-					var_dump($result); die;
+					$rate = $result['rate']<=0?0:$result['rate'];
 
-        	/*$sql = "UPDATE `vouchers` SET `rate`=:rate,`redeem`=:redeem,`redeem_date`=:redeem_date WHERE `voucher`=:voucher";
+        	$sql = "UPDATE `vouchers` SET `rate`=:rate,`redeem`=:redeem,`redeem_date`=:redeem_date WHERE `voucher`=:voucher";
 
 					$stmt = $this->conn->prepare( $sql );
 
 					$stmt->bindValue(':redeem', $redeem, PDO::PARAM_INT);
 					$stmt->bindValue(':redeem_date', date('Y,m,d'), PDO::PARAM_STR);
 					$stmt->bindValue(':voucher', $voucher, PDO::PARAM_STR);
-					$stmt->bindValue(':rate', $rate, PDO::PARAM_STR);
+					$stmt->bindValue(':rate', $rate, PDO::PARAM_INT);
 
 					$result = $stmt->execute();
-					*/
-					/*Get rate from rates table*/
-					$sql_res="SELECT * FROM `vouchers` v JOIN rates r on v.campaign = r.campaign WHERE v.voucher='$voucher' and created_date <= '2019-12-25' order by created_date DESC LIMIT 1";
-					$stmt_res = $this->conn->prepare( $sql_res );
-					$stmt_res->execute();
-					$rate = $stmt_res->fetchAll( PDO::FETCH_ASSOC );
-					$rate = $result[0];
 
-
-
-					return json_encode(['code' => 200, 'message' => $params['voucher'].' success ']);
+					return json_encode(['code' => 200, 'rate'=>$rate,'message' => $params['voucher'].' success ']);
 
 
 
 
 				} catch (\PDOException $e) {
-					return json_encode(['code' => 404, 'message' => 'Error update for '.$params['voucher']]);
+
+					return json_encode(['code' => 404, 'message' => 'Error update for '.$e->getMessage()]);
             $this->logger->info('err updateVouchers', json_decode($e, true));
         }
         return false;
@@ -239,7 +247,11 @@ class Campaign
 				$stmt->execute();
 				$result = $stmt->fetchAll( PDO::FETCH_ASSOC );
 				$result = $result[0];
-				//var_dump($voucher); die;
+//				var_dump($voucher);
+//				var_dump($result);
+//				var_dump(__FILE__.' '.__LINE__);
+//
+//				die;
 			if(!$result)
 				return json_encode(['code'=>404,'message'=>'Does not exist: ' . $voucher]);
 

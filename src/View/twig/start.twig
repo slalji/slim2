@@ -10,17 +10,14 @@
 {% block contents%}
     <div class="container">
     <h1>{{ page_h1 }}</h1>
-        <h5>{{ base_uri }} {{ baseurl }}</h5>
-
-        <p>{{ content | raw }}</p>
         <div class="card" style="padding: 10px">
             <div class="card-body row">
                 <form id="form-start" name="form-start" action="start" method="post">
-                    -<div class="form-group row">
-                        <div class="col-sm-6" style="padding: 10px">Click on <button>Start</button> button to create a <b>Checkout</b> session for redeeming
+                    <!--<div class="form-group row">
+                        <div class="col-sm-6" style="padding: 10px">Click on <button class="btn btn-danger">Start</button> button to create a <b>Checkout</b> session for redeeming
                         group of QR tickets. You will be able to stop any time and print the results as a <b>Receipt</b></div>
                     </div>
-                    <!--<div class="form-group row">
+                   <div class="form-group row">
                         <label for="Name" class="col-sm-9 col-form-label">Campaign Title *</label>
                         <div class="col-sm-12">
                             <select id="print" name="campaign" class="print form-control">
@@ -45,15 +42,14 @@
                             <input type="hidden"  readonly class="form-control" id="redeem_id" name="redeem_id" value="{{ time }}">
 
                         </div>
-                        <label for="start_date" class="col-sm-9 col-form-label">Timestamp</label>
                         <div class="col-sm-12">
-                            <input type="text"  readonly class="form-control" id="redeem_date" name="redeem_date" value="{{ now }}">
+                            <input type="hidden"  readonly class="form-control" id="redeem_date" name="redeem_date" value="{{ now }}">
 
                         </div>
 
                     </div>
 
-                    <input type="submit" class="btn btn-danger btn-lg mb-2 print" id="start" name="submit" value="Start"/>
+                    <input type="submit" class="btn btn-danger btn-lg mb-2 print" id="start" name="submit" value="Start Redeem QR "/>
 
 
                 </form>
