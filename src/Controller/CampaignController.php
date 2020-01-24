@@ -61,29 +61,15 @@ class CampaignController extends Controller
 		$this->view = $this->container->get('view');
 		$this->pdo = $this->container->get('db');
 		$params = $request->getParams();
-//		var_dump('stop');
-//		var_dump($params);
-//		var_dump($_SESSION['cart']);
-//		var_dump(__FILE__.' '.__LINE__);
-//
-//		/**print receipt**/
-//
-//		die;
-/* from receipt where id=xx (session?)
-show on page list
-vouchers
-rate select rate from rates where campign_title=ctitle and rate => $rate (first item is the rate)
-header id and date
-print button
-*/
+
 
 		$page_data = [
 			'page_h1' => 'Voucher Receipt',
-			'results' => $_SESSION['cart'],//['voucher'=>$params['voucher'],'rate'=>0,'msg'=>''],
-			'redeem_id' => $_SESSION['redeem_id'],
-			'redeem_date' => $_SESSION['redeem_date']
+			'results' => $params['voucher'],//['voucher'=>$params['voucher'],'rate'=>0,'msg'=>''],
+			'redeem_id' => $params['redeem_id'],
+			'redeem_date' => date('M jS\, Y h:i:s A',strtotime($params['redeem_date']))
 		];
-		return $this->view->render($response, 'redeem.twig', $page_data);
+		return $this->view->render($response, 'receipt.twig', $page_data);
 	}
 
     /**
@@ -418,8 +404,8 @@ print button
 							$page_data = [
 								'page_h1' => 'Voucher Redeemed',
 								'results' => $_SESSION['cart'],//['voucher'=>$params['voucher'],'rate'=>0,'msg'=>''],
-								'redeem_id' => $params['redeem_id'],
-								'redeem_date' => $params['redeem_date']
+								'redeem_id' => empty($params['redeem_id'])?$_SESSION['redeem_id']:$params['redeem_id'],
+								'redeem_date' => empty($params['redeem_date'])?$_SESSION['redeem_date']:$params['redeem_date']
 							];
 
 							$_SESSION['redeem_id']=$params['redeem_id'];

@@ -1,0 +1,66 @@
+
+{% block head %}
+{% include "_base.twig" %}
+{% endblock %}
+
+{% block body %}
+    {% include "partials/nav.twig" %}
+    <div class="container">
+
+        <h5>{{ base_uri }} {{ baseurl }}</h5>
+
+        <p>{{ content | raw }}</p>
+        {% if 'Redeemed' in page_h1  %}
+            <h1>{{ page_h1 }}</h1><div class="card-header">
+            <!--<span style="color:green">{{ result }}</span>-->
+                Voucher was Redeemed
+            </div>
+        {% endif %}
+        {% if 'Error' in page_h1  %}
+            <div class="card-header">
+
+                <span style="color:red"><h1>{{ page_h1 }}</h1> {{ result }}</span>
+            </div>
+        {% endif %}
+        <div class="card">
+            <div class="card-body">
+
+                <div id="result">
+
+                    <h1 >Receipt</h1>
+                    <h5><label>No.:</label> {{ redeem_id }}</h5>
+                    <h5><label>Date:</label> {{ redeem_date }}</h5>
+
+                    <form action="stop" method="post">
+                        <hr style="padding: 10px 0;border-top: 2px dashed black">
+                        <table class="table">
+
+                            <tr>
+                                <th>Voucher</th>
+                                <th>Rate</th>
+                                <th>Notes</th>
+
+                            </tr>
+                            {% for result in results %}
+
+                            <tr>
+                                <td><input type=text value="{{ result.voucher }}" name="voucher[]">{{ result.voucher }}</td>
+                                <td><input type=text value="{{ result.rate }}" name="rate[]">{{ result.rate }}</td>
+                                <td><input type=text value="{{ result.msg }}" name="msg[]">{{ result.msg }}</td>
+
+                            </tr>
+                            {% endfor %}
+                            <tr><td><input type="submit" class="btn btn-danger mb-2 stop" id="stop"  name="submit"  value="Print Receipt"/></td></tr>
+
+                        </table>
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
