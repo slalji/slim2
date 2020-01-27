@@ -63,11 +63,31 @@ class CampaignController extends Controller
 		$params = $request->getParams();
 
 
+		$vouchers = $params['voucher'];
+		$rates = $params['rate'];
+
+		$msg = $params['msg'];
+		$total=0;
+
+		if (!empty($rates)){
+			foreach ($rates as $r){
+				$total += $r;
+			}
+		}
+
+
+		$cart=array();
+		for($i=0; $i < sizeof($vouchers); $i++){
+			$cart[] = ['voucher'=>$vouchers[$i],'rate'=>$rates[$i],'msg'=>$msg[$i]];
+		}
+
 		$page_data = [
 			'page_h1' => 'Voucher Receipt',
-			'results' => $params['voucher'],//['voucher'=>$params['voucher'],'rate'=>0,'msg'=>''],
+			'results' => $cart,//['voucher'=>$params['voucher'],'rate'=>0,'msg'=>''],
 			'redeem_id' => $params['redeem_id'],
-			'redeem_date' => date('M jS\, Y h:i:s A',strtotime($params['redeem_date']))
+			'redeem_date' => $params['redeem_date'],
+			'date' => date('M jS\, Y h:i:s A',strtotime($params['redeem_date'])),
+			'total'=>$total
 		];
 		return $this->view->render($response, 'receipt.twig', $page_data);
 	}
@@ -298,26 +318,30 @@ class CampaignController extends Controller
 		$id = $params['id'];
 
 
+
 		//$password = "5xKu1WjoEJj4qptK";
 		//SELECT voucher, COUNT(voucher) FROM vouchers GROUP BY voucher HAVING COUNT(voucher) > 1
 		$class = new Campaign($this->container);
 
-		try {
-			$result = $class->update($id, $rate, $expiry);
 
-			if (!empty($result)) {
+		try {
+			$result = ($class->update($id, $rate, $expiry));
+			$result_rate = ($class->add_rate($id, $rate, ''));
+			
+
+			if (json_decode($result)->code == 200 and json_decode($result_rate)->code == 200) {
 				$page_data = [
 					'page_h1' => 'Campagins Listed',
-					'content' => json_decode($result),
+					'result' => 'results: '.json_decode($result)->message. ' res_rate:'. json_decode($result_rate)->message,
 					'admin' => $_SESSION['auth'],
-					'time' => date('H:i:s',$_SESSION['time'])
 				];
+
 				//var_dump(json_decode($result)); die();
-				return $this->view->render($response, 'list.twig', $page_data);
+				return $this->view->render($response, 'success.twig', $page_data);
 			} else {
 				$page_data = [
-					'page_h1' => 'Error while updating Campaigns',
-					'content' => $result,
+					'page_h1' => 'Error while updating Campaigns ',
+					'result' => 'results: '.json_decode($result)->code. ' res_rate:'. json_decode($result_rate)->code,
 					'admin' => $_SESSION['auth'],
 					'time' => date('H:i:s',$_SESSION['time'])
 				];
@@ -370,6 +394,8 @@ class CampaignController extends Controller
         $this->view = $this->container->get('view');
 				$params = $request->getParams();
 
+				//var_dump($params); die();
+
 
 			if($params['submit'] == 'Reset'){
 
@@ -403,7 +429,7 @@ class CampaignController extends Controller
 
 							$page_data = [
 								'page_h1' => 'Voucher Redeemed',
-								'results' => $_SESSION['cart'],//['voucher'=>$params['voucher'],'rate'=>0,'msg'=>''],
+								'results' => $_SESSION['cart'],
 								'redeem_id' => empty($params['redeem_id'])?$_SESSION['redeem_id']:$params['redeem_id'],
 								'redeem_date' => empty($params['redeem_date'])?$_SESSION['redeem_date']:$params['redeem_date']
 							];
@@ -418,24 +444,6 @@ class CampaignController extends Controller
 					catch (\Exception $e) {
 						return $e->getMessage();
 
-						/*if ($_SESSION['cart']){
-							//var_dump($_SESSION['cart']);
-							$key = array_search($params['voucher'], array_column($_SESSION['cart'], 'voucher'));
-
-						}
-
-						if (!$key)
-							$_SESSION['cart'][]=['voucher'=>$params['voucher'],'rate'=>0,'msg'=>''];
-
-						//var_dump($_SESSION);
-						$page_data = [
-							'page_h1' => 'Error while redeeming Vouchers ',
-							'results' => $_SESSION['cart'],//['voucher'=>$params['voucher'],'rate'=>0,'msg'=>$e->getMessage()],
-							'redeem_id' => $params['redeem_id'],
-							'redeem_date' => $params['redeem_date']
-						];
-
-						return $this->view->render($response, 'redeem.twig', $page_data);*/
 					}
     }
 }

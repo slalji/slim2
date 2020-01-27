@@ -29,9 +29,9 @@
 
                     <h1 >Receipt</h1>
                     <h5><label>No.:</label> {{ redeem_id }}</h5>
-                    <h5><label>Date:</label> {{ redeem_date }}</h5>
+                    <h5><label>Date:</label> {{ date }}</h5>
 
-                    <form action="stop" method="post">
+
                         <hr style="padding: 10px 0;border-top: 2px dashed black">
                         <table class="table">
 
@@ -44,18 +44,20 @@
                             {% for result in results %}
 
                             <tr>
-                                <td><input type=text value="{{ result.voucher }}" name="voucher[]">{{ result.voucher }}</td>
-                                <td><input type=text value="{{ result.rate }}" name="rate[]">{{ result.rate }}</td>
-                                <td><input type=text value="{{ result.msg }}" name="msg[]">{{ result.msg }}</td>
+                                <td>{{ result.voucher }}</td>
+                                <td>{{ result.rate }}</td>
+                                <td>{{ result.msg }}</td>
 
                             </tr>
                             {% endfor %}
-                            <tr><td><input type="submit" class="btn btn-danger mb-2 stop" id="stop"  name="submit"  value="Print Receipt"/></td></tr>
-
+                            <tr><td colspan="2"><hr style="border:2px double #aaa"></td></tr>
+                            <tr style="font-weight: bold"><td>Total</td><td colspan="2">{{ total }}</td></tr>
+                            <!--<tr><td><input type="submit" class="btn btn-success mb-2 stop" id="stop"  name="submit"  value="Print PDF"/></td></tr>
+                            --><tr><td><A  href="javascript:window.print()"><button class="btn btn-success">Print This Page</button></A></td></tr>
                         </table>
 
 
-                    </form>
+
 
                 </div>
             </div>

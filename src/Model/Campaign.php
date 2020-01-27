@@ -332,27 +332,58 @@ class Campaign
 	}
 	public  function update($id, $rate, $expiry_date){
     	try{
-				$sql = "UPDATE `campaigns` SET `rate`=:rate,`expiry_date`=:expiry WHERE id=:id";
+				$sql ="UPDATE campaigns c
+									SET c.rate = :rate,
+											c.created_date= :now,
+											c.expiry_date= :expiry_date
+									WHERE c.id = :id";
 
 				$stmt = $this->conn->prepare( $sql );
-
 
 				$stmt->bindValue(':rate', $rate, PDO::PARAM_INT);
 				$stmt->bindValue(':expiry_date', $expiry_date, PDO::PARAM_STR);
 				$stmt->bindValue(':id', $id, PDO::PARAM_STR);
+				$stmt->bindValue(':now', date('Y-m-d'), PDO::PARAM_STR);
 
 				$result = $stmt->execute();
 				return json_encode(['code' => 200, 'message' => 'Voucher updated']);
 
 			}
 			catch (\Exception $e){
-				return json_encode(['code'=>404,'message'=>'Problem updating']);
+
+				return json_encode(['code'=>404,'message'=>$e.getMessage()]);
 			}
 
 
 
 
 }
+	public  function add_rate($id, $rate){
+
+		try{
+			$sql ="insert into rates (campaign,rate, created_date) values (:id, :rate, :now)";
+
+			$stmt = $this->conn->prepare( $sql );
+
+			$stmt->bindValue(':rate', $rate, PDO::PARAM_INT);
+			$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+			$stmt->bindValue(':now', date('Y-m-d'), PDO::PARAM_STR);
+
+			$result = $stmt->execute();
+
+			return json_encode(['code' => 200, 'message' => 'Rate updated']);
+
+		}
+		catch (\Exception $e){
+
+			return json_encode(['code'=>404,'message'=>$e->getMessage()]);
+		}
+
+
+
+
+	}
+
 
 
 }
