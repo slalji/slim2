@@ -6,6 +6,7 @@
             </a>
         </svg>
     </a>
+
     {% if not admin  %}
     <form class="form-inline" method="post" action="{{ path_for('sign') }}">
         <input class="form-control mr-sm-2" type="text" name="username" placeholder="Username" aria-label="SignIn">

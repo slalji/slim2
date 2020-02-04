@@ -327,7 +327,6 @@ class CampaignController extends Controller
 		try {
 			$result = ($class->update($id, $rate, $expiry));
 			$result_rate = ($class->add_rate($id, $rate, ''));
-			
 
 			if (json_decode($result)->code == 200 and json_decode($result_rate)->code == 200) {
 				$page_data = [
@@ -416,6 +415,9 @@ class CampaignController extends Controller
         //$password = "5xKu1WjoEJj4qptK";
         $class = new Campaign($this->container);
         $result = $class->getCampaignId($v[1]);
+        $result['redeem_id']=$params['redeem_id'];
+				$result['redeem_date']=$params['redeem_date'];
+
 
 					try {
 							$updated = $class->redeemVoucher($result);

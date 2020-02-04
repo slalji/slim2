@@ -111,9 +111,14 @@ class Campaign
 			$rate = $params['rate'];
 			$id = $params['id'];
 			$voucher = $params['voucher'];
+			$redeem_id = $params['redeem_id'];
+			$redeem_date = $params['redeem_date'];
 			$full_voucher = $params['prefix'].'-'.$params['voucher'].'-'.$params['sufix'];
 
-
+//					var_dump('params');
+//					var_dump($params);
+//					var_dump(__FILE__.' '.__LINE__);
+//					die;
 
 			$result = $this->voucher_exists($full_voucher);
 
@@ -132,33 +137,29 @@ class Campaign
 
         try {
 
-					/*$sql = "SELECT c.rate from vouchers v join campaigns c on c.id = v.campaign where v.voucher = '$voucher' ";
-					$stmt = $this->conn->prepare( $sql );
-					$stmt->execute();
-					$res_rate = $stmt->fetchAll( PDO::FETCH_ASSOC );
-					//var_dump($rate);
-					$res_rate = $res_rate[0];
-					$rate = $res_rate['rate'];
-					var_dump($rate['rate']);
-					var_dump(__FILE__.''.__LINE__);
-					die;*/
+
 
 					/*Get rate from rates table*/
 					//$sql_res="SELECT * FROM `vouchers` v JOIN rates r on v.campaign = r.campaign WHERE v.voucher='$voucher' and r.created_date <= v.created_date order by r.created_date DESC LIMIT 1";
-					$sql_res="SELECT r.rate FROM `vouchers` v JOIN rates r on v.campaign = r.campaign WHERE v.voucher='$voucher' and r.created_date <= v.created_date order by r.created_date DESC LIMIT 1";
-					$stmt_res = $this->conn->prepare( $sql_res );
+					//$sql_res="SELECT r.rate FROM `vouchers` v JOIN rates r on v.campaign = r.campaign WHERE v.voucher='$voucher' and r.created_date <= v.created_date order by r.created_date DESC LIMIT 1";
+					$sql_rate = "select c.rate from vouchers v join campaigns c on v.campaign = c.id where v.voucher='$voucher'";
+					$stmt_res = $this->conn->prepare( $sql_rate );
 					$stmt_res->execute();
 					$result = $stmt_res->fetchAll( PDO::FETCH_ASSOC );
+
 
 					$result = $result[0];
 					$rate = $result['rate']<=0?0:$result['rate'];
 
-        	$sql = "UPDATE `vouchers` SET `rate`=:rate,`redeem`=:redeem,`redeem_date`=:redeem_date WHERE `voucher`=:voucher";
+
+
+        	$sql = "UPDATE `vouchers` SET `rate`=:rate,`redeem`=:redeem,`redeem_id`=:redeem_id, `redeem_date`=:redeem_date WHERE `voucher`=:voucher";
 
 					$stmt = $this->conn->prepare( $sql );
 
 					$stmt->bindValue(':redeem', $redeem, PDO::PARAM_INT);
-					$stmt->bindValue(':redeem_date', date('Y,m,d'), PDO::PARAM_STR);
+					$stmt->bindValue(':redeem_date', date('Y-m-d',strtotime($redeem_date)));
+					$stmt->bindValue(':redeem_id', $redeem_id);
 					$stmt->bindValue(':voucher', $voucher, PDO::PARAM_STR);
 					$stmt->bindValue(':rate', $rate, PDO::PARAM_INT);
 
@@ -247,11 +248,7 @@ class Campaign
 				$stmt->execute();
 				$result = $stmt->fetchAll( PDO::FETCH_ASSOC );
 				$result = $result[0];
-//				var_dump($voucher);
-//				var_dump($result);
-//				var_dump(__FILE__.' '.__LINE__);
-//
-//				die;
+
 			if(!$result)
 				return json_encode(['code'=>404,'message'=>'Does not exist: ' . $voucher]);
 

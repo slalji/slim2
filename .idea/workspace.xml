@@ -4,11 +4,11 @@
     <list default="true" id="606c3ba6-d4fc-44ab-90ab-c2ab3db970cd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/Controller/CampaignController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CampaignController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Campaign.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Campaign.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/twig/campaign_edit.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/twig/campaign_edit.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/twig/list.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/twig/list.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/twig/receipt.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/twig/receipt.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/twig/partials/nav.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/twig/partials/nav.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/twig/redeem.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/twig/redeem.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/twig/test.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/Campaign.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="363" column="85" selection-start-line="363" selection-start-column="85" selection-end-line="363" selection-end-column="85" />
+            <state relative-caret-position="1184">
+              <caret line="250" selection-start-line="250" selection-end-line="250" />
               <folding>
                 <element signature="e#27#46#0#PHP" expanded="true" />
               </folding>
@@ -58,47 +58,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View/twig/campaign_edit.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="64" selection-start-line="64" selection-end-line="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View/twig/list.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/twig/partials/nav.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="137" selection-start-line="21" selection-start-column="137" selection-end-line="21" selection-end-column="137" />
+            <state relative-caret-position="120">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/twig/redeem.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="394">
+              <caret line="43" column="45" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/CampaignController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="329" column="6" selection-start-line="329" selection-start-column="6" selection-end-line="329" selection-end-column="6" />
+            <state relative-caret-position="239">
+              <caret line="419" selection-start-line="419" selection-end-line="419" />
               <folding>
                 <element signature="e#34#57#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/View/twig/error.twig">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -109,21 +95,24 @@
       <find>Error update for</find>
       <find>voucher_exists</find>
       <find>insertVouchers</find>
-      <find>redeemVoucher</find>
       <find>voucher expired</find>
       <find>hr</find>
       <find>redeem</find>
       <find>list</find>
-      <find>update</find>
       <find>list.twig</find>
       <find>Problem</find>
       <find>getMessage</find>
       <find>$redeem</find>
       <find>add_rate</find>
+      <find>update</find>
+      <find>redeemVoucher</find>
       <find>rate</find>
+      <find>$sql</find>
+      <find>__DIR</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
+      <dir>$PROJECT_DIR$</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -134,13 +123,13 @@
       <list>
         <option value="$PROJECT_DIR$/public/index.php" />
         <option value="$PROJECT_DIR$/src/View/twig/start.twig" />
-        <option value="$PROJECT_DIR$/src/View/twig/partials/nav.twig" />
         <option value="$PROJECT_DIR$/src/View/twig/campaign_edit.twig" />
         <option value="$PROJECT_DIR$/src/View/twig/list.twig" />
-        <option value="$PROJECT_DIR$/src/View/twig/redeem.twig" />
         <option value="$PROJECT_DIR$/src/View/twig/receipt.twig" />
-        <option value="$PROJECT_DIR$/src/Model/Campaign.php" />
+        <option value="$PROJECT_DIR$/src/View/twig/partials/nav.twig" />
         <option value="$PROJECT_DIR$/src/Controller/CampaignController.php" />
+        <option value="$PROJECT_DIR$/src/View/twig/redeem.twig" />
+        <option value="$PROJECT_DIR$/src/Model/Campaign.php" />
       </list>
     </option>
   </component>
@@ -204,14 +193,7 @@
               <item name="slim2" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="~/Documents/www/slim2" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="View" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="slim2" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/Documents/www/slim2" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="View" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="twig" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Controller" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -251,7 +233,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1579753832285</updated>
-      <workItem from="1579753833495" duration="26897000" />
+      <workItem from="1579753833495" duration="31418000" />
     </task>
     <task id="LOCAL-00001" summary="receipt.twig">
       <created>1579766991392</created>
@@ -271,7 +253,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27434000" />
+    <option name="totallyTimeSpent" value="31955000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="122" width="1352" height="733" extended-state="0" />
@@ -329,30 +311,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="receipt.twig" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Controller/AdminAuthController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="e#35#54#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/PrintController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="54" selection-start-line="54" selection-end-line="54" />
-          <folding>
-            <element signature="e#34#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="46" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="46" />
           <folding>
             <element signature="e#34#57#0#PHP" expanded="true" />
           </folding>
@@ -383,13 +345,6 @@
     <entry file="file://$PROJECT_DIR$/src/View/twig/_base.twig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/twig/partials/nav.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="137" selection-start-line="21" selection-start-column="137" selection-end-line="21" selection-end-column="137" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/twig/index.twig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -397,17 +352,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/twig/redeem.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="97" column="54" selection-start-line="97" selection-start-column="54" selection-end-line="97" selection-end-column="54" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#3;n#form#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#form#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -429,16 +373,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="29" column="36" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="36" />
-          <folding>
-            <element signature="e#8#47#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/twig/campaign.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -456,22 +390,73 @@
     <entry file="file://$PROJECT_DIR$/src/View/twig/error.twig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Campaign.php">
+    <entry file="file://$PROJECT_DIR$/src/View/twig/partials/nav.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="363" column="85" selection-start-line="363" selection-start-column="85" selection-end-line="363" selection-end-column="85" />
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="46" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="46" />
           <folding>
-            <element signature="e#27#46#0#PHP" expanded="true" />
+            <element signature="e#34#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="29" column="36" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="36" />
+          <folding>
+            <element signature="e#8#47#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/AdminAuthController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+          <folding>
+            <element signature="e#35#54#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/CampaignController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="329" column="6" selection-start-line="329" selection-start-column="6" selection-end-line="329" selection-end-column="6" />
+        <state relative-caret-position="239">
+          <caret line="419" selection-start-line="419" selection-end-line="419" />
           <folding>
             <element signature="e#34#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/twig/redeem.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="43" column="45" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model/Campaign.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1184">
+          <caret line="250" selection-start-line="250" selection-end-line="250" />
+          <folding>
+            <element signature="e#27#46#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
