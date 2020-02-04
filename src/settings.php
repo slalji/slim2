@@ -26,13 +26,20 @@ return [
             'level' => \Monolog\Logger::DEBUG,
         ],
         // Database connection settings
-        "db" => [
-            "host" => "127.0.0.1",
-            "dbname" => "barcode",
-            "user" => "root",
-            //"pass" => "5xKu1WjoEJj4qptK"
-            'pass' => 'K9@m2076'
-        ],
+//        "db" => [
+//            "host" => "127.0.0.1",
+//            "dbname" => "barcode",
+//            "user" => "root",
+//            //"pass" => "5xKu1WjoEJj4qptK"
+//            'pass' => 'K9@m2076'
+//        ],
+			"db" => [
+				"host" => "127.0.0.1",
+				"dbname" => "likejagg_barcode",
+				"user" => "likejagg_barcode",
+				"pass" => "5xKu1WjoEJj4qptK"
+				//'pass' => 'K9@m2076'
+			],
 
         'assets' =>
             [

@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="606c3ba6-d4fc-44ab-90ab-c2ab3db970cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controller/CampaignController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CampaignController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Campaign.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Campaign.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/twig/partials/nav.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/twig/partials/nav.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/twig/redeem.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/twig/redeem.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +18,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model/Campaign.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1184">
@@ -62,6 +56,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="8" selection-start-line="8" selection-end-line="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/settings.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -107,8 +110,8 @@
       <find>update</find>
       <find>redeemVoucher</find>
       <find>rate</find>
-      <find>$sql</find>
       <find>__DIR</find>
+      <find>$sql</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
@@ -130,6 +133,7 @@
         <option value="$PROJECT_DIR$/src/Controller/CampaignController.php" />
         <option value="$PROJECT_DIR$/src/View/twig/redeem.twig" />
         <option value="$PROJECT_DIR$/src/Model/Campaign.php" />
+        <option value="$PROJECT_DIR$/src/settings.php" />
       </list>
     </option>
   </component>
@@ -189,12 +193,6 @@
               <item name="~/Documents/www/slim2" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
-            <path>
-              <item name="slim2" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/Documents/www/slim2" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Controller" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -233,7 +231,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1579753832285</updated>
-      <workItem from="1579753833495" duration="31418000" />
+      <workItem from="1579753833495" duration="31720000" />
     </task>
     <task id="LOCAL-00001" summary="receipt.twig">
       <created>1579766991392</created>
@@ -253,7 +251,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31955000" />
+    <option name="totallyTimeSpent" value="32257000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="122" width="1352" height="733" extended-state="0" />
@@ -458,6 +456,13 @@
           <folding>
             <element signature="e#27#46#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="38" column="35" selection-start-line="38" selection-start-column="35" selection-end-line="38" selection-end-column="35" />
         </state>
       </provider>
     </entry>
