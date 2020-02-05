@@ -7,6 +7,23 @@
  * --> Envirnoment variables and private settings should be set in config/.env
  *
  */
+$db_local[] = [
+	"host" => "127.0.0.1",
+	"dbname" => "barcode",
+	"user" => "root",
+	//"pass" => "5xKu1WjoEJj4qptK"
+	'pass' => 'K9@m2076'
+];
+$db[]= [
+				"host" => "127.0.0.1",
+				"dbname" => "likejagg_barcode",
+				"user" => "likejagg_barcode",
+				"pass" => "5xKu1WjoEJj4qptK"
+				//'pass' => 'K9@m2076'
+			];
+
+if ($_SERVER["HTTP_HOST"] === 'localhost')
+	$db = $db_local;
 
 return [
     'settings' => [
@@ -26,6 +43,7 @@ return [
             'level' => \Monolog\Logger::DEBUG,
         ],
         // Database connection settings
+			"db" => $db,
 //        "db" => [
 //            "host" => "127.0.0.1",
 //            "dbname" => "barcode",
@@ -33,17 +51,17 @@ return [
 //            //"pass" => "5xKu1WjoEJj4qptK"
 //            'pass' => 'K9@m2076'
 //        ],
-			"db" => [
-				"host" => "127.0.0.1",
-				"dbname" => "likejagg_barcode",
-				"user" => "likejagg_barcode",
-				"pass" => "5xKu1WjoEJj4qptK"
-				//'pass' => 'K9@m2076'
-			],
+//			"db" => [
+//				"host" => "127.0.0.1",
+//				"dbname" => "likejagg_barcode",
+//				"user" => "likejagg_barcode",
+//				"pass" => "5xKu1WjoEJj4qptK"
+//				//'pass' => 'K9@m2076'
+//			],
 
         'assets' =>
             [
-                'build_dir' => __DIR__ . '/../public/assets/'  // path for front-end build output
+                'build_dir' =>  '/../public/assets/'  // path for front-end build output
             ]
     ],
 ];

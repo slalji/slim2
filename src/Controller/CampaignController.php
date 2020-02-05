@@ -28,6 +28,8 @@ class CampaignController extends Controller
 			//$byUser = $class->campaginsByUser($_SESSION['user']);
 			$time = strtotime("now");
 
+
+
 			$page_data = [
 				'page_h1' => 'Redeem',
 				'content' => '<p>Start Redeem QR </p>',
