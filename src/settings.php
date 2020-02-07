@@ -8,18 +8,17 @@
  *
  */
 $db_local[] = [
-	"host" => "127.0.0.1",
+	"host" => "localhost",
 	"dbname" => "barcode",
 	"user" => "root",
-	//"pass" => "5xKu1WjoEJj4qptK"
-	'pass' => 'K9@m2076'
+	'pass' => ''
 ];
 $db[]= [
 				"host" => "127.0.0.1",
 				"dbname" => "likejagg_barcode",
 				"user" => "likejagg_barcode",
 				"pass" => "5xKu1WjoEJj4qptK"
-				//'pass' => 'K9@m2076'
+
 			];
 
 if ($_SERVER["HTTP_HOST"] === 'localhost')
@@ -31,8 +30,8 @@ return [
         'addContentLengthHeader' => false, // Allow the web server to send the content-length header
         // Renderer settings
         'renderer' => [
-            'template_path' => __DIR__ . '/../src/View/',
-            'template_cache' => __DIR__  . '/../cache/twig/',
+            'template_path' => $_SERVER['DOCUMENT_ROOT']. '/../src/View/',
+            'template_cache' => $_SERVER['DOCUMENT_ROOT']  . '/../cache/twig/',
             'page_js' => false,  // if true will try to load `www/build/js/{{page_name}}.js`
             'page_css' => false // if true will try to load `www/build/js/{{page_name}}.css`
         ],
