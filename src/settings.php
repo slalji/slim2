@@ -11,7 +11,7 @@ $db_local[] = [
 	"host" => "localhost",
 	"dbname" => "barcode",
 	"user" => "root",
-	'pass' => ''
+	'pass' => 'K9@m2076'
 ];
 $db[]= [
 				"host" => "127.0.0.1",
@@ -42,14 +42,14 @@ return [
             'level' => \Monolog\Logger::DEBUG,
         ],
         // Database connection settings
-			"db" => $db,
-//        "db" => [
-//            "host" => "127.0.0.1",
-//            "dbname" => "barcode",
-//            "user" => "root",
-//            //"pass" => "5xKu1WjoEJj4qptK"
-//            'pass' => 'K9@m2076'
-//        ],
+			//"db" => $db,
+        "db" => [
+            "host" => "127.0.0.1",
+            "dbname" => "barcode",
+            "user" => "root",
+            //"pass" => "5xKu1WjoEJj4qptK"
+            'pass' => 'K9@m2076'
+        ],
 //			"db" => [
 //				"host" => "127.0.0.1",
 //				"dbname" => "likejagg_barcode",

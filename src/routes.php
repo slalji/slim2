@@ -24,7 +24,7 @@ $app->group('/admin', function () {
 	$this->get('/logout', App\Controller\AdminAuthController::class .':logout'  )->setName('logout');
 
 
-	$this->get('/campaign', App\Controller\CampaignController::class)->setName('campaign');
+	$this->get('/campaign', App\Controller\CampaignController::class .':campaign')->setName('campaign');
 	$this->post('/campaign/create', App\Controller\CampaignController::class . ':create');
 	$this->get('/campaign/edit/{id}', App\Controller\CampaignController::class . ':edit')->setName('edit');
 	$this->post('/campaign/edit/update', App\Controller\CampaignController::class . ':update')->setName('update');

@@ -93,6 +93,27 @@ class CampaignController extends Controller
 		];
 		return $this->view->render($response, 'receipt.twig', $page_data);
 	}
+	public function campaign(Request $request, Response $response)
+	{
+		$this->view = $this->container->get('view');
+		$this->pdo = $this->container->get('db');
+		$class = new Campaign($this->container);
+		$result = $class->allCampagins();
+		//$byUser = $class->campaginsByUser($_SESSION['user']);
+		$time = strtotime("now");
+
+
+
+		$page_data = [
+			'page_h1' => 'Campagin',
+			'content' => '<p>Start Redeem QR </p>',
+			'campagins' => json_decode($result,true),
+			'admin' => $_SESSION['auth'],
+			'time' => $time,
+			'now' => date('Y-m-d H:i:s', $time)
+		];
+		return $this->view->render($response, 'campaign.twig', $page_data);
+	}
 
     /**
      * @param $request

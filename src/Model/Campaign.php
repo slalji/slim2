@@ -152,8 +152,14 @@ class Campaign
 					$rate = $result['rate']<=0?0:$result['rate'];
 
 
+					$temp_table = "CREATE TEMPORARY TABLE temp_vouchers
+					SELECT * FROM vouchers 
+					LIMIT 0;";
 
-        	$sql = "UPDATE `vouchers` SET `rate`=:rate,`redeem`=:redeem,`redeem_id`=:redeem_id, `redeem_date`=:redeem_date WHERE `voucher`=:voucher";
+					$stmt = $this->conn->prepare( $temp_table );
+					$stmt->execute();
+
+        	$sql = "UPDATE `temp_vouchers` SET `rate`=:rate,`redeem`=:redeem,`redeem_id`=:redeem_id, `redeem_date`=:redeem_date WHERE `voucher`=:voucher";
 
 					$stmt = $this->conn->prepare( $sql );
 

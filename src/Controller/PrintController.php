@@ -64,6 +64,7 @@ class PrintController extends Controller
 
             $results = $class->getVouchers($c_id, $perPage,$startAt);
             $total = $class->getTotalVouchers($c_id);
+            //var_dump($results); die;
 
 						$barcode = array();
 
