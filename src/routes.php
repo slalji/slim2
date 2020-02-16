@@ -27,6 +27,7 @@ $app->group('/admin', function () {
 	$this->get('/campaign', App\Controller\CampaignController::class .':campaign')->setName('campaign');
 	$this->post('/campaign/create', App\Controller\CampaignController::class . ':create');
 	$this->get('/campaign/edit/{id}', App\Controller\CampaignController::class . ':edit')->setName('edit');
+	$this->get('/campaign/delete/{id}', App\Controller\CampaignController::class . ':delete')->setName('delete');
 	$this->post('/campaign/edit/update', App\Controller\CampaignController::class . ':update')->setName('update');
 
 	$this->get('/campaign/list', App\Controller\CampaignController::class . ':listit')->setName('listit');

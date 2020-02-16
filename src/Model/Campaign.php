@@ -67,41 +67,44 @@ class Campaign
         $data = array();
 
 
-        try {
+
                 $i=0;
                 $length = (int)$params['quantity'];
                 $campaign = $params['c_id'];
                 $rate = $params['rate'];
 								$created_date = $params['created_date'];
+
                 if ($length <= 0)
                     throw \Exception('Error, quantity must be greater than zero');
 
                 for($i; $i<$length; $i++) {
+									try {
+										$token = isset($params['pre']) ? $params['pre'] : '';
+										$token .= self::getToken();
+										$token .= isset($params['self']) ? $params['self'] : '';
 
-                    $token = isset($params['pre']) ? $params['pre'] : '';
-                    $token .= self::getToken();
-                    $token .= isset($params['self']) ? $params['self'] : '';
-
-                    $sql = "INSERT INTO vouchers (campaign,voucher,rate,created_date) VALUES (:campaign,:voucher,:rate)";
+										$sql = "INSERT INTO vouchers (campaign,voucher,rate, created_date) VALUES (:campaign,:voucher,:rate,  :created_date)";
 										$stmt = $this->conn->prepare($sql);
 
 
-										$stmt->bindValue( "campaign", $params['c_id'], PDO::PARAM_STR );
-                    $stmt->bindValue( "voucher", $token, PDO::PARAM_STR );
-										$stmt->bindValue( "rate", $rate, PDO::PARAM_INT );
-										$stmt->bindValue( "created_date", $created_date, PDO::PARAM_STR );
+										$stmt->bindValue("campaign", $params['c_id'], PDO::PARAM_INT);
+										$stmt->bindValue("voucher", $token, PDO::PARAM_STR);
+										$stmt->bindValue("rate", $rate, PDO::PARAM_INT);
+										$stmt->bindValue("created_date", $created_date, PDO::PARAM_STR);
 										$stmt->execute();
-                }
+
+									} catch (Exception $e) {
+										$this->logger->info('err insertVouchers', json_decode($e, true));
+										return json_encode(['code' => $e->getCode(), 'message' => 'err insertVouchers ' . $e->getMessage()]);
+
+									}
+								}
 
 
             return json_encode(['code' => 200, 'message' => $length.' Vouchers successfully created']);
 
-        } catch (Exception $e) {
-            $this->logger->info('err insertVouchers', json_decode($e, true));
-            return json_encode(['code' => $e->getCode(), 'message' => $e->getMessage()]);
 
-        }
-        return false;
+
     }
 
     public function redeemVoucher($params)
@@ -130,7 +133,7 @@ class Campaign
 				return json_encode(['code'=>405,'rate'=>0, 'message'=>'Voucher expired: ' . $params['voucher']]);
 
 			elseif(json_decode($result)->code == 404)
-				return json_encode(['code'=>404, 'rate'=>0,'message'=>'Voucher expired: ' . $params['voucher']]);
+				return json_encode(['code'=>404, 'rate'=>0,'message'=>'Voucher does not exist: ' . $params['voucher']]);
 
 
 
@@ -151,15 +154,7 @@ class Campaign
 					$result = $result[0];
 					$rate = $result['rate']<=0?0:$result['rate'];
 
-
-					$temp_table = "CREATE TEMPORARY TABLE temp_vouchers
-					SELECT * FROM vouchers 
-					LIMIT 0;";
-
-					$stmt = $this->conn->prepare( $temp_table );
-					$stmt->execute();
-
-        	$sql = "UPDATE `temp_vouchers` SET `rate`=:rate,`redeem`=:redeem,`redeem_id`=:redeem_id, `redeem_date`=:redeem_date WHERE `voucher`=:voucher";
+        	$sql = "UPDATE `vouchers` SET `rate`=:rate,`redeem`=:redeem,`redeem_id`=:redeem_id, `redeem_date`=:redeem_date WHERE `voucher`=:voucher";
 
 					$stmt = $this->conn->prepare( $sql );
 
@@ -219,6 +214,24 @@ class Campaign
 		//echo $result;
 
 	}
+	public function deleteCampaginById($id){
+    	try{
+				$sql = "DELETE campaigns, vouchers FROM campaigns JOIN vouchers ON campaigns.id = vouchers.campaign WHERE campaigns.id= ".$id ;
+
+				$stmt = $this->conn->prepare( $sql );
+				$result = $stmt->execute();
+
+				if ($result)
+					return json_encode(['code'=>200,'message'=>'deleted campaign and voucher for : '. $id]);
+
+			}
+			catch (\Exception $exception){
+				return json_encode(['code'=>404,'message'=>'Err ' . $exception->getMessage() . __FUNCTION__ .' '.__LINE__ .''.$sql]);
+			}
+
+
+	}
+
 	public function campaginsByUser($user){
 		$sql = "select id, title, expiry_date from campaigns where user='$user' order by title " ;
 
@@ -262,9 +275,15 @@ class Campaign
 				if ($result['redeem'] == 1)
 					return json_encode(['code'=>202,'message'=>'Already redeemed : ' . $voucher.' '.$result['redeem'].' '.$result['expiry_date']]);
 
-				else if ($result['diff'] == 0)
+				else if ($result['diff'] == 0){
+					var_dump($v);
+					var_dump($result);
+					var_dump($result['diff']);
+					die();
 					return json_encode(['code'=>405,'message'=>'Voucher expired: ' . $voucher.' '.$result['expiry_date']]);
-				else if ($result['voucher'] === $v[1]) {
+
+				}
+									else if ($result['voucher'] === $v[1]) {
 
 					return json_encode(['code' => 200, 'message' => 'Voucher exists: ' . $voucher . ' ' . $result['redeem']]);
 				}

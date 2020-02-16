@@ -46,11 +46,12 @@
                     </div>
                     <div>
                         <input type="submit" class="btn btn-success mb-2 v-redeem" name="submit" id="v-redeem" value="Redeem"/>
-
+                        {% if result ==false %}
                         <span style="float:right">
                             <input type="submit" class="btn btn-warning mb-2 reset" id="reset"  name="submit"  value="Reset"/>
 
                         </span>
+                        {% endif %}
                     </div>
 
 

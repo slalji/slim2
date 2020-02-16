@@ -15,7 +15,7 @@
     </form>
 
     {% elseif admin == 'print' %}
-        <div> <a href="{{ path_for('print') }}">print</a>   | <a href="{{ path_for('logout') }}">logout</a> ~
+        <div> <a href="{{ path_for('print') }}" target="_blank">print</a>   | <a href="{{ path_for('logout') }}">logout</a> ~
             You are can print {{ admin }}
         </div>
     {% else %}

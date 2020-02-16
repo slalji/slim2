@@ -183,6 +183,7 @@ class CampaignController extends Controller
 						$content['c_id']=$this->c_id;
 						$result = $class->insertVouchers($content);
 
+
             if (json_decode($result)->code == 200) {
                 $page_data = [
                     'page_h1' => 'New Campaign Created',
@@ -382,6 +383,51 @@ class CampaignController extends Controller
 			return $this->view->render($response, 'error.twig', $page_data);
 		}
 	}
+	public function delete($request, $response, $args)
+	{
+
+
+		$this->view = $this->container->get('view');
+		$id = $args['id'];
+		$class = new Campaign($this->container);
+
+
+		try {
+
+			$result = $class->deleteCampaginById($id);
+
+			if (json_decode($result)->code == 200 ) {
+				$page_data = [
+					'page_h1' => 'Campagins Listed',
+					'result' => 'results: '.json_decode($result)->message,
+					'admin' => $_SESSION['auth'],
+				];
+
+				//var_dump(json_decode($result)); die();
+				return $this->view->render($response, 'success.twig', $page_data);
+			} else {
+				$page_data = [
+					'page_h1' => 'Error while updating Campaigns ',
+					'result' => 'results: '.json_decode($result)->code. ' message: '. json_decode($result)->message,
+					'admin' => $_SESSION['auth'],
+					'time' => date('H:i:s',$_SESSION['time'])
+				];
+				return $this->view->render($response, 'error.twig', $page_data);
+			}
+
+		} catch (\Exception $e) {
+			//return $this->view->render($response, 'error.twig', $page_data);
+			$page_data = [
+				'page_h1' => 'Error ',
+				'result' => $e->getMessage(),
+				'admin' => $_SESSION['auth'],
+				'time' => date('H:i:s',$_SESSION['time'])
+
+			];
+			return $this->view->render($response, 'error.twig', $page_data);
+		}
+	}
+
 
 
 
