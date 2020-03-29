@@ -3,8 +3,8 @@ namespace App\Controller;
 
 
 use App\Model\Campaign;
-use Com\Tecnick\Barcode\Barcode;
-use Com\Tecnick\Barcode\Type\Square\QrCode;
+//use Com\Tecnick\Barcode\Barcode;
+//use Com\Tecnick\Barcode\Type\Square\QrCode;
 use Slim\Http\Response;
 use Slim\Http\Request;
 
@@ -18,21 +18,26 @@ class PrintController extends Controller
 
 {
     protected $view = null;
-    protected $pdo = null;
-    protected $c_id = '';
+    protected $conn = null;
+
+	/**
+	 * @param $request
+	 * @param $response
+	 * @return mixed
+	 */
 
     public function __invoke(Request $request, Response $response)
     {
 			$this->view = $this->container->get('view');
-			$this->pdo = $this->container->get('db');
+			$this->conn = $this->container->get('db');
 			$class = new Campaign($this->container);
 			$result = $class->allCampagins();
-			//$byUser = $class->campaginsByUser($_SESSION['user']);
+			
 
         $page_data = [
-            'page_h1' => 'Print',
-            'content' => '<p>Print Campaign Vouchers.</p>',
-						'campagins' => json_decode($result,true),
+					'page_h1' => 'Print',
+					'content' => '<p>Print Campaign Vouchers.</p>',
+					'campagins' => json_decode($result,true),
 					'admin' => $_SESSION['auth'],
 					'time' => date('H:i:s',$_SESSION['time'])
         ];
@@ -176,8 +181,8 @@ class PrintController extends Controller
 						$page_data = [
 								'page_h1' => 'Voucher Redeemed',
 								'result' => json_decode($updated)->message,
-							'admin' => $_SESSION['auth'],
-							'time' => date('H:i:s',$_SESSION['time'])
+								'admin' => $_SESSION['auth'],
+								'time' => date('H:i:s',$_SESSION['time'])
 						];
 
 						return $this->view->render($response, 'redeem.twig', $page_data);
@@ -194,10 +199,5 @@ class PrintController extends Controller
 					}
     }
 
-    /*public function allCampaigns($request, $response){
-			$class = new Campaign($this->container);
-			$result = $class->allCampagins();
-			echo $result;
-		}*/
 
 }

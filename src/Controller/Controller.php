@@ -9,14 +9,26 @@ use \Psr\Container\ContainerInterface as ContainerInterface;
  */
 class Controller
 {
-    protected $container;
+	/**
+	 * @var ContainerInterface
+	 */
+	protected $container;
 
-    public function __construct(ContainerInterface $container)
+
+	/**
+	 * Controller constructor.
+	 * @param ContainerInterface $container
+	 */
+	public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
     }
 
-    public function __get($property)
+	/**
+	 * @param $property
+	 * @return mixed
+	 */
+	public function __get($property)
     {
         if ($this->container->{$property}) {
             return $this->container->{$property};

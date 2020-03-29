@@ -15,11 +15,25 @@ use Slim\Http\Request;
 class CampaignController extends Controller
 
 {
-    protected $view = null;
-    protected $pdo = null;
-    protected $c_id = '';
+	/**
+	 * @var null
+	 */
+	protected $view = null;
+	/**
+	 * @var null
+	 */
+	protected $pdo = null;
+	/**
+	 * @var string
+	 */
+	protected $c_id = null;
 
-    public function __invoke(Request $request, Response $response)
+	/**
+	 * @param Request $request
+	 * @param Response $response
+	 * @return mixed
+	 */
+	public function __invoke(Request $request, Response $response)
     {
     	$this->view = $this->container->get('view');
     	$this->pdo = $this->container->get('db');
@@ -40,6 +54,12 @@ class CampaignController extends Controller
 			];
         return $this->view->render($response, 'start.twig', $page_data);
     }
+
+	/**
+	 * @param Request $request
+	 * @param Response $response
+	 * @return mixed
+	 */
 	public function start(Request $request, Response $response)
 	{
 		$this->view = $this->container->get('view');
@@ -58,6 +78,12 @@ class CampaignController extends Controller
 		];
 		return $this->view->render($response, 'redeem.twig', $page_data);
 	}
+
+	/**
+	 * @param Request $request
+	 * @param Response $response
+	 * @return mixed
+	 */
 	public function stop(Request $request, Response $response)
 	{
 		$this->view = $this->container->get('view');
@@ -93,6 +119,12 @@ class CampaignController extends Controller
 		];
 		return $this->view->render($response, 'receipt.twig', $page_data);
 	}
+
+	/**
+	 * @param Request $request
+	 * @param Response $response
+	 * @return mixed
+	 */
 	public function campaign(Request $request, Response $response)
 	{
 		$this->view = $this->container->get('view');
@@ -219,7 +251,13 @@ class CampaignController extends Controller
         }
     }
 
-    public function edit($request, $response, $args)
+	/**
+	 * @param $request
+	 * @param $response
+	 * @param $args
+	 * @return mixed
+	 */
+	public function edit($request, $response, $args)
 	{
 		$content = [];
 		$this->view = $this->container->get('view');
@@ -267,6 +305,12 @@ class CampaignController extends Controller
 			return $this->view->render($response, 'error.twig', $page_data);
 		}
 	}
+
+	/**
+	 * @param $request
+	 * @param $response
+	 * @return mixed
+	 */
 	public function listit($request, $response)
 	{
 		$content = [];
@@ -331,6 +375,12 @@ class CampaignController extends Controller
 			return $this->view->render($response, 'error.twig', $page_data);
 		}
 	}
+
+	/**
+	 * @param $request
+	 * @param $response
+	 * @return mixed
+	 */
 	public function update($request, $response)
 	{
 		$content = [];
@@ -383,6 +433,13 @@ class CampaignController extends Controller
 			return $this->view->render($response, 'error.twig', $page_data);
 		}
 	}
+
+	/**
+	 * @param $request
+	 * @param $response
+	 * @param $args
+	 * @return mixed
+	 */
 	public function delete($request, $response, $args)
 	{
 
@@ -429,8 +486,11 @@ class CampaignController extends Controller
 	}
 
 
-
-
+	/**
+	 * @param $request
+	 * @param $response
+	 * @return mixed
+	 */
 	public function redeem($request, $response)
     {
         $this->view = $this->container->get('view');
@@ -456,19 +516,15 @@ class CampaignController extends Controller
      */
     public function checkVoucher($request, $response)
     {
-        $date = '';
-        $period = '';
-        $voucher = '';
+
         $this->view = $this->container->get('view');
 				$params = $request->getParams();
 
-				//var_dump($params); die();
 
+				if($params['submit'] == 'Reset'){
 
-			if($params['submit'] == 'Reset'){
-
-				return $response->withRedirect('./');
-			}
+					return $response->withRedirect('./');
+				}
 
         elseif ($params['submit'] == 'Stop'){
         	var_dump('clicked stop');
@@ -481,7 +537,6 @@ class CampaignController extends Controller
 				$v = explode('-', $params['voucher']);
 
 		
-        //$password = "5xKu1WjoEJj4qptK";
         $class = new Campaign($this->container);
         $result = $class->getCampaignId($v[1]);
         $result['redeem_id']=$params['redeem_id'];

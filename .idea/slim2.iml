@@ -18,6 +18,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/slim/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/slim/slim" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/slim/twig-view" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/squizlabs/php_codesniffer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/config" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/debug" />

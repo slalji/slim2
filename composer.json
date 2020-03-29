@@ -5,12 +5,15 @@
         "monolog/monolog": "^1.17",
         "robmorgan/phinx": "^0.5.1",
         "slim/twig-view": "^2.5",
-        "slim/psr7": "^0.6.0",
+        "slim/psr4": "^0.6.0",
         "tecnickcom/tc-lib-barcode": "^1.15"
     },
     "autoload": {
         "psr-4": {
             "App\\": "src/"
         }
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5"
     }
 }
