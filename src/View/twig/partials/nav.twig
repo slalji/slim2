@@ -18,6 +18,7 @@
         <div> <a href="{{ path_for('print') }}" target="_blank">print</a>   | <a href="{{ path_for('logout') }}">logout</a> ~
             You are can print {{ admin }}
         </div>
+
     {% else %}
         <div>
             <a href="{{ path_for('campaign') }}">campaigns</a> | <a href="{{ path_for('listit') }}">list</a> | <a href="{{ path_for('home') }}">redeem</a>

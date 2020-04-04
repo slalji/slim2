@@ -45,10 +45,11 @@ return [
 			//"db" => $db,
         "db" => [
             "host" => "127.0.0.1",
-            "dbname" => "barcode",
-            "user" => "root",
-            //"pass" => "5xKu1WjoEJj4qptK"
-            'pass' => 'K9@m2076'
+            "dbname" => "likejagg_barcode",
+            "user" => "likejagg_barcode",
+            "pass" => "5xKu1WjoEJj4qptK"
+            //'pass' => 'K9@m2076'
+            //'pass' = 'CiTM*am8'
         ],
 //			"db" => [
 //				"host" => "127.0.0.1",
