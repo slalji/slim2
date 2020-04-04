@@ -62,7 +62,7 @@ class PrintController extends Controller
 
 
         $class = new Campaign($this->container);
-        $perPage=empty($args['perPage'])?10:$args['perPage'];;
+        $perPage=empty($args['perPage'])?20:$args['perPage'];;
 				$startAt = $perPage * ($page);
 
         try {
