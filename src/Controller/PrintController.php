@@ -62,12 +62,21 @@ class PrintController extends Controller
 
 
         $class = new Campaign($this->container);
-        $perPage=empty($args['perPage'])?20:$args['perPage'];;
-				$startAt = $perPage * ($page);
+
+        $perPage=empty($args['perPage'])?20:$args['perPage'];
+        //var_dump($page); var_dump($args['perPage']);die;
+        if ($page>=0)
+					$startAt = $perPage * ($page);
+        else
+        	$perPage = '-1';
+
 
         try {
 
-            $results = $class->getVouchers($c_id, $perPage,$startAt);
+
+          	$results = $class->getVouchers($c_id, $perPage,$startAt);
+
+
             $total = $class->getTotalVouchers($c_id);
             //var_dump($results); die;
 

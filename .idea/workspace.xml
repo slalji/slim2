@@ -4,8 +4,10 @@
     <list default="true" id="606c3ba6-d4fc-44ab-90ab-c2ab3db970cd" name="Default Changelist" comment="receipt.twig">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PrintController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PrintController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Campaign.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Campaign.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/twig/partials/nav.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/twig/partials/nav.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/twig/print_vouchers.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/twig/print_vouchers.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +26,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/View/twig/print_vouchers.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="75">
+              <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
@@ -36,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+            <state relative-caret-position="344">
+              <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
               <folding>
                 <element signature="e#8#47#0#PHP" expanded="true" />
               </folding>
@@ -59,22 +61,43 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View/twig/partials/nav.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="41" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="41" />
+            <state relative-caret-position="375">
+              <caret line="25" column="147" selection-start-line="25" selection-start-column="147" selection-end-line="25" selection-end-column="147" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/PrintController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="64" column="43" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="43" />
+            <state relative-caret-position="219">
+              <caret line="66" column="10" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
               <folding>
                 <element signature="e#34#57#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Report.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Model/Campaign.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="305" selection-start-line="305" selection-end-line="305" />
+              <folding>
+                <element signature="e#27#46#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -130,6 +153,8 @@
       <find>$this-&gt;pdo</find>
       <find>cid</find>
       <find>5xKu1WjoEJj4qptK</find>
+      <find>$page</find>
+      <find>admin</find>
     </findStrings>
     <replaceStrings>
       <replace>$this-&gt;conn</replace>
@@ -151,17 +176,17 @@
         <option value="$PROJECT_DIR$/src/settings.php" />
         <option value="$PROJECT_DIR$/src/dependencies.php" />
         <option value="$PROJECT_DIR$/src/View/twig/list.twig" />
-        <option value="$PROJECT_DIR$/src/routes.php" />
         <option value="$PROJECT_DIR$/src/View/twig/redeem.twig" />
-        <option value="$PROJECT_DIR$/src/Model/Campaign.php" />
         <option value="$PROJECT_DIR$/src/View/twig/campaign_edit.twig" />
         <option value="$PROJECT_DIR$/src/Controller/Controller.php" />
         <option value="$PROJECT_DIR$/src/Controller/CampaignController.php" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/src/View/twig/partials/nav.twig" />
         <option value="$PROJECT_DIR$/src/middleware.php" />
-        <option value="$PROJECT_DIR$/src/View/twig/print_vouchers.twig" />
+        <option value="$PROJECT_DIR$/src/routes.php" />
+        <option value="$PROJECT_DIR$/src/Model/Campaign.php" />
         <option value="$PROJECT_DIR$/src/Controller/PrintController.php" />
+        <option value="$PROJECT_DIR$/src/View/twig/print_vouchers.twig" />
+        <option value="$PROJECT_DIR$/src/View/twig/partials/nav.twig" />
       </list>
     </option>
   </component>
@@ -198,7 +223,7 @@
       <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="48" />
     <option name="y" value="74" />
     <option name="width" value="1352" />
@@ -210,6 +235,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -228,11 +254,37 @@
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="Controller" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
+            <path>
+              <item name="slim2" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/www/slim2" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Model" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="slim2" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/www/slim2" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="View" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="slim2" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/www/slim2" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="View" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="twig" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="slim2" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/www/slim2" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="View" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="twig" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="partials" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -281,7 +333,8 @@
       <workItem from="1584048744841" duration="70000" />
       <workItem from="1584054302743" duration="229000" />
       <workItem from="1585385544908" duration="7025000" />
-      <workItem from="1585972702336" duration="5900000" />
+      <workItem from="1585972702336" duration="6237000" />
+      <workItem from="1586716607245" duration="8285000" />
     </task>
     <task id="LOCAL-00001" summary="receipt.twig">
       <created>1579766991392</created>
@@ -308,14 +361,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67237000" />
+    <option name="totallyTimeSpent" value="75859000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.64341086" visible="true" weight="0.24821173" />
-      <window_info active="true" id="Structure" order="1" sideWeight="0.35658914" side_tool="true" visible="true" weight="0.24821173" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6414729" visible="true" weight="0.25178826" />
+      <window_info id="Structure" order="1" sideWeight="0.35852712" side_tool="true" visible="true" weight="0.25178826" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32956153" />
@@ -445,16 +498,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Campaign.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#27#46#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -503,6 +546,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/twig/list.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/middleware.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="44" column="40" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/View/twig/print.twig">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -529,52 +586,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+        <state relative-caret-position="344">
+          <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
           <folding>
             <element signature="e#8#47#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/twig/partials/nav.twig">
+    <entry file="file://$PROJECT_DIR$/src/Model/Report.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="41" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="41" />
+        <state relative-caret-position="120">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/twig/list.twig">
+    <entry file="file://$PROJECT_DIR$/src/Model/Campaign.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/middleware.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="44" column="40" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/twig/print_vouchers.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        <state relative-caret-position="218">
+          <caret line="305" selection-start-line="305" selection-end-line="305" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="e#27#46#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/PrintController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="64" column="43" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="43" />
+        <state relative-caret-position="219">
+          <caret line="66" column="10" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
           <folding>
             <element signature="e#34#57#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/twig/print_vouchers.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/twig/partials/nav.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="147" selection-start-line="25" selection-start-column="147" selection-end-line="25" selection-end-column="147" />
         </state>
       </provider>
     </entry>

@@ -303,12 +303,13 @@ class Campaign
         return $token = uniqid();
     }
 		public function getVouchers($id, $perPage=10, $startAt=0){
-		//$v = explode('-',$voucher);
 
-		$sql = "SELECT * FROM `campaigns` c LEFT JOIN vouchers v ON (c.id = v.campaign) WHERE c.id ='$id' && expiry_date >= now() && redeem !=true  LIMIT $startAt, $perPage";
+			if ($perPage != '-1')
+				$sql = "SELECT * FROM `campaigns` c LEFT JOIN vouchers v ON (c.id = v.campaign) WHERE c.id ='$id' && expiry_date >= now() && redeem !=true  LIMIT $startAt, $perPage";
+			else
+				$sql = "SELECT * FROM `campaigns` c LEFT JOIN vouchers v ON (c.id = v.campaign) WHERE c.id ='$id' && expiry_date >= now() && redeem !=true ";
 
-
-		$stmt = $this->conn->prepare( $sql );
+			$stmt = $this->conn->prepare( $sql );
 		$stmt->execute();
 		$result = $stmt->fetchAll( PDO::FETCH_ASSOC );
 

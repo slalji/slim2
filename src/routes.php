@@ -4,6 +4,7 @@
 use App\Controller\AdminAuthController;
 use App\Controller\CampaignController;
 use App\Controller\HomeController;
+use App\Controller\PrintController;
 
 $container = $app->getContainer();
 
@@ -35,6 +36,7 @@ $app->group('/admin', function () {
 	$this->get('/print/select', App\Controller\PrintController::class .':select')->setName('select');
 //$this->post('/print/print', App\Controller\PrintController::class .':printit')->setName('printit');
 	$this->get('/print/print[/{page}]', App\Controller\PrintController::class .':printit')->setName('printit');
+	$this->get('/print/printall[/{page}]', App\Controller\PrintController::class .':printit')->setName('printall');
 
 	$this->get('/report/{cid}', App\Controller\ReportController::class)->setName('report');
 })->add(new AuthMiddleware($container));
