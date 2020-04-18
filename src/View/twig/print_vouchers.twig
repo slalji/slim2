@@ -18,7 +18,8 @@
 
     {% if (page +1) < total and page >=0 %}
         Page: <b>{{ page }} </b>
-        of {{ total }}
+        of {{ total }} |
+        Go to Page: <input name="pg" class="form-group pg" id="pg" size="4"> <button id="go">Go</button> |
         <a href="{{base_url()}}/admin/print/print/{{ page + 1 }}?campaign={{ c_id }}&submit=print">next</a>
     {% endif %}
 
@@ -26,31 +27,48 @@
 </div>
 
     </div>
-        <div class="form-group row" >
-                        {% for barcode in content  %}
-                            {% set _transform ='180deg' %}
-                            {% if barcode.id is divisible by(2) %}
+        <div class="form-group row" style="margin-left: 10px; margin-right: 10px;">
+         {% for barcode in content  %}
+          {% set _transform ='180deg' %}
+            {% if barcode.id is divisible by(2) %}
 
-                                 {% set _transform = '' %}
-                            {% endif %}
+                 {% set _transform = '' %}
+            {% endif %}
 
-                        <div class="col-sm-2" >
+            <div class="col-sm-2" >
                             <div class="row" style="border:2px dashed gray; margin:2px;padding:10px; transform: rotate({{ _transform }});">
+                                <h6>KL Coffee Estate Berries 2020</h6>
 
-                                        <h6>KL Coffee Estate Berries 2020</h6>
-
-                                        <div>{{ barcode.img | raw }}</div>
-                                        <div><small>id: #{{ barcode.id | raw }}
-                                                <br><b><span class="voucher">{{ barcode.voucher|raw }}</b></span>
-                                                <br>expiry: {{ barcode.expiry }}</small>
-                                        </div>
+                                <div>{{ barcode.img | raw }}</div>
+                                <div>
+                                    <small>id: #{{ barcode.id | raw }}
+                                        <br><b><span class="voucher">{{ barcode.voucher|raw }}</b></span>
+                                        <br>expiry: {{ barcode.expiry }}
+                                    </small>
+                                </div>
                             </div>
                         </div>
 
-                        {% endfor %}
-                    </div>
+         {% endfor %}
+
         </div>
 
 {% endblock %}
 {% endblock %}
 
+<script>
+  $( document ).ready(function(event) {
+    console.log( "ready!" );
+    $('#go').click(function (){
+
+      var pg = $('#pg').val();
+      var url = 'http://localhost/slim2/admin/print/print/' + pg +'?campaign=99&submit=print'
+      //alert( "GO" + url);
+      //alert( "Handler for .submit() called." );
+      //event.preventDefault();
+      //$( url ).submit();
+      location.href = url;
+      //ajax
+    })
+  });
+</script>

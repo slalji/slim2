@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="606c3ba6-d4fc-44ab-90ab-c2ab3db970cd" name="Default Changelist" comment="receipt.twig">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PrintController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PrintController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/twig/partials/nav.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/twig/partials/nav.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/twig/print_vouchers.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/twig/print_vouchers.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,11 +19,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View/twig/print_vouchers.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="322">
+              <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#1;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,7 +62,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/PrintController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="234">
@@ -187,8 +189,8 @@
         <option value="$PROJECT_DIR$/src/routes.php" />
         <option value="$PROJECT_DIR$/src/Model/Campaign.php" />
         <option value="$PROJECT_DIR$/src/View/twig/partials/nav.twig" />
-        <option value="$PROJECT_DIR$/src/View/twig/print_vouchers.twig" />
         <option value="$PROJECT_DIR$/src/Controller/PrintController.php" />
+        <option value="$PROJECT_DIR$/src/View/twig/print_vouchers.twig" />
       </list>
     </option>
   </component>
@@ -249,31 +251,6 @@
               <item name="~/Documents/www/slim2" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
-            <path>
-              <item name="slim2" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/Documents/www/slim2" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Controller" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="slim2" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/Documents/www/slim2" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Model" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="slim2" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/Documents/www/slim2" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="View" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="slim2" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/Documents/www/slim2" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="View" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="twig" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -329,7 +306,7 @@
       <workItem from="1585385544908" duration="7025000" />
       <workItem from="1585972702336" duration="6237000" />
       <workItem from="1586716607245" duration="9966000" />
-      <workItem from="1586976259589" duration="311000" />
+      <workItem from="1586976259589" duration="3243000" />
     </task>
     <task id="LOCAL-00001" summary="receipt.twig">
       <created>1579766991392</created>
@@ -356,7 +333,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77851000" />
+    <option name="totallyTimeSpent" value="80783000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -613,19 +590,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/View/twig/print_vouchers.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/PrintController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="65" column="43" selection-start-line="65" selection-start-column="43" selection-end-line="65" selection-end-column="43" />
           <folding>
             <element signature="e#34#57#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/twig/print_vouchers.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="68" column="8" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="8" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#1;n#!!top" />
           </folding>
         </state>
       </provider>
