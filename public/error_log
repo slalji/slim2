@@ -1,0 +1,17 @@
+[07-Apr-2020 12:45:04 America/Boise] PHP Warning:  error_log(/home1/likejagg/public_html/slim2/src/Model/../../log/error.log): failed to open stream: No such file or directory in /home1/likejagg/public_html/slim2/src/Model/User.php on line 73
+[10-Apr-2020 12:59:11 America/Boise] PHP Warning:  error_log(/home1/likejagg/public_html/slim2/src/Model/../../log/error.log): failed to open stream: No such file or directory in /home1/likejagg/public_html/slim2/src/Model/User.php on line 73
+[13-Apr-2020 11:38:42 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type/Square/QrCode/Mask.php on line 277
+[13-Apr-2020 11:39:16 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type/Square/QrCode/MaskNum.php on line 50
+[13-Apr-2020 12:49:22 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type.php on line 515
+[14-Apr-2020 01:20:50 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type/Square/QrCode/Mask.php on line 281
+[14-Apr-2020 01:24:09 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type.php on line 515
+[14-Apr-2020 01:30:54 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type.php on line 515
+[14-Apr-2020 01:31:28 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type.php on line 515
+[16-Apr-2020 08:18:28 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type.php on line 515
+[16-Apr-2020 08:22:12 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type/Square/QrCode/Estimate.php on line 67
+[16-Apr-2020 08:23:37 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type.php on line 515
+[16-Apr-2020 13:08:47 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type.php on line 515
+[16-Apr-2020 13:25:23 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type.php on line 515
+[17-Apr-2020 00:35:33 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type/Square/QrCode/Init.php on line 235
+[17-Apr-2020 02:46:45 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type/Square/QrCode/MaskNum.php on line 136
+[17-Apr-2020 02:49:03 America/Boise] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/likejagg/public_html/slim2/vendor/tecnickcom/tc-lib-barcode/src/Type.php on line 515
