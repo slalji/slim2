@@ -62,11 +62,7 @@
     $('#go').click(function (){
 
       var pg = $('#pg').val();
-      var url = 'http://localhost/slim2/admin/print/print/' + pg +'?campaign=99&submit=print'
-      //alert( "GO" + url);
-      //alert( "Handler for .submit() called." );
-      //event.preventDefault();
-      //$( url ).submit();
+      var url = {{ base_url() }} + '/admin/print/print/' + pg +'?campaign=99&submit=print'
       location.href = url;
       //ajax
     })
