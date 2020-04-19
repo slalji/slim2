@@ -2,3 +2,5 @@ src/config.php
 src/settings.php
 composer.lock
 vendor
+.idea
+.well-known
