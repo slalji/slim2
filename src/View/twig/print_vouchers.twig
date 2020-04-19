@@ -62,7 +62,7 @@
     $('#go').click(function (){
 
       var pg = $('#pg').val();
-      var url = {{ base_url() }} + '/admin/print/print/' + pg +'?campaign={{c_id}}&submit=print'
+      var url = {{ base_url() }} + '/admin/print/print/' + pg +'?campaign='+{{c_id}}+'&submit=print';
       location.href = url;
       //ajax
     })
