@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="606c3ba6-d4fc-44ab-90ab-c2ab3db970cd" name="Default Changelist" comment="receipt.twig">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/twig/print_vouchers.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/twig/print_vouchers.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/View/twig/print_vouchers.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="67" column="6" lean-forward="true" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
+            <state relative-caret-position="318">
+              <caret line="37" column="32" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -223,7 +222,7 @@
       <workItem from="1585972702336" duration="6237000" />
       <workItem from="1586716607245" duration="9966000" />
       <workItem from="1586976259589" duration="7610000" />
-      <workItem from="1587280863068" duration="1363000" />
+      <workItem from="1587280863068" duration="1845000" />
     </task>
     <task id="LOCAL-00001" summary="receipt.twig">
       <created>1579766991392</created>
@@ -250,10 +249,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86513000" />
+    <option name="totallyTimeSpent" value="86995000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6348315" visible="true" weight="0.25894135" />
       <window_info id="Structure" order="1" sideWeight="0.36516854" side_tool="true" visible="true" weight="0.25894135" />
@@ -558,8 +558,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/View/twig/print_vouchers.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="67" column="6" lean-forward="true" selection-start-line="67" selection-start-column="6" selection-end-line="67" selection-end-column="6" />
+        <state relative-caret-position="318">
+          <caret line="37" column="32" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
         </state>
       </provider>
     </entry>
