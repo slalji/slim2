@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="606c3ba6-d4fc-44ab-90ab-c2ab3db970cd" name="Default Changelist" comment="receipt.twig">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/twig/partials/nav.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/twig/partials/nav.twig" afterDir="false" />
+=======
+    <list default="true" id="606c3ba6-d4fc-44ab-90ab-c2ab3db970cd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/dependencies.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/dependencies.php" afterDir="false" />
+>>>>>>> 11aee52711a70a0c453532873cdb45a927eaed94
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,11 +42,49 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
               <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/settings.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="33" column="57" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/dependencies.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/twig/redeem.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="645">
+              <caret line="43" column="45" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/CampaignController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
+              <folding>
+                <element signature="e#34#57#0#PHP" expanded="true" />
+              </folding>
+>>>>>>> 11aee52711a70a0c453532873cdb45a927eaed94
             </state>
           </provider>
         </entry>
@@ -105,6 +148,7 @@
         <option value="$PROJECT_DIR$/src/View/twig/campaign_edit.twig" />
         <option value="$PROJECT_DIR$/src/Controller/Controller.php" />
         <option value="$PROJECT_DIR$/src/Controller/CampaignController.php" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/middleware.php" />
         <option value="$PROJECT_DIR$/src/routes.php" />
@@ -113,6 +157,10 @@
         <option value="$PROJECT_DIR$/src/View/twig/print_vouchers.twig" />
         <option value="$PROJECT_DIR$/src/View/twig/partials/nav.twig" />
         <option value="$PROJECT_DIR$/.gitignore" />
+=======
+        <option value="$PROJECT_DIR$/src/settings.php" />
+        <option value="$PROJECT_DIR$/src/dependencies.php" />
+>>>>>>> 11aee52711a70a0c453532873cdb45a927eaed94
       </list>
     </option>
   </component>
@@ -174,12 +222,15 @@
               <item name="slim2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< HEAD
             <path>
               <item name="slim2" type="b2602c69:ProjectViewProjectNode" />
               <item name="slim2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="View" type="462c0819:PsiDirectoryNode" />
             </path>
+=======
+>>>>>>> 11aee52711a70a0c453532873cdb45a927eaed94
           </expand>
           <select />
         </subPane>
@@ -223,6 +274,7 @@
       <updated>1579753832285</updated>
       <workItem from="1579753833495" duration="31848000" />
       <workItem from="1580940586912" duration="2480000" />
+<<<<<<< HEAD
       <workItem from="1581181984110" duration="11762000" />
       <workItem from="1581921265385" duration="3123000" />
       <workItem from="1582921806167" duration="980000" />
@@ -236,6 +288,8 @@
       <workItem from="1586716607245" duration="9966000" />
       <workItem from="1586976259589" duration="7610000" />
       <workItem from="1587280863068" duration="2842000" />
+=======
+>>>>>>> 11aee52711a70a0c453532873cdb45a927eaed94
     </task>
     <task id="LOCAL-00001" summary="receipt.twig">
       <created>1579766991392</created>
@@ -262,7 +316,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="87992000" />
+=======
+    <option name="totallyTimeSpent" value="34865000" />
+>>>>>>> 11aee52711a70a0c453532873cdb45a927eaed94
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -569,6 +627,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/View/twig/partials/nav.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -580,6 +639,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="33" column="57" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dependencies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+>>>>>>> 11aee52711a70a0c453532873cdb45a927eaed94
         </state>
       </provider>
     </entry>
