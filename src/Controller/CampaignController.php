@@ -3,6 +3,7 @@ namespace App\Controller;
 
 
 use App\Model\Campaign;
+use App\Model\Report;
 use PDO;
 use Slim\Http\Response;
 use Slim\Http\Request;
@@ -82,12 +83,22 @@ class CampaignController extends Controller
 		for($i=0; $i < sizeof($vouchers); $i++){
 			$cart[] = ['voucher'=>$vouchers[$i],'rate'=>$rates[$i],'msg'=>$msg[$i]];
 		}
+		//var_dump($params); die;
+		unset($params['submit']);
+		$report = new Report($this->container);
+		$check = $report->checkExists($params['redeem_id']);
+		var_dump($check); die;
+		$report->insertReceiptValues($params);
+
 
 		$page_data = [
 			'page_h1' => 'Voucher Receipt',
 			'results' => $cart,//['voucher'=>$params['voucher'],'rate'=>0,'msg'=>''],
 			'redeem_id' => $params['redeem_id'],
 			'redeem_date' => $params['redeem_date'],
+			'user_name' => $params['user_name'],
+			'user_phone' => $params['user_phone'],
+			'user_comment' => $params['user_comment'],
 			'date' => date('M jS\, Y h:i:s A',strtotime($params['redeem_date'])),
 			'total'=>$total
 		];

@@ -39,7 +39,7 @@ $container['db'] = function ($c) {
 };
 $container['logger'] = function () {
     $logger = new Monolog\Logger('logger');
-    $filename = _DIR__ . '../log/error.log';
+    $filename = $_SERVER['DOCUMENT_ROOT'] . '../log/error.log';
     $stream = new Monolog\Handler\StreamHandler($filename, Monolog\Logger::DEBUG);
     $fingersCrossed = new Monolog\Handler\FingersCrossedHandler(
         $stream, Monolog\Logger::ERROR);
