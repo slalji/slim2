@@ -1,6 +1,6 @@
 
 {% block head %}
-    {% include "_base.twig" %}
+{% include "_base.twig" %}
 {% endblock %}
 
 {% block body %}
@@ -13,8 +13,8 @@
         {% if 'Redeemed' in page_h1  %}
             <h1>{{ page_h1 }}</h1><div class="card-header">
             <!--<span style="color:green">{{ result }}</span>-->
-            Voucher was Redeemed
-        </div>
+                Voucher was Redeemed
+            </div>
         {% endif %}
         {% if 'Error' in page_h1  %}
             <div class="card-header">
@@ -33,23 +33,18 @@
                     <h5><label>Comment:</label> {{ user_comment }}</h5>
 
 
-                    <hr style="padding: 10px 0;border-top: 2px dashed black">
-                    <table class="table">
+                        <hr style="padding: 10px 0;border-top: 2px dashed black">
+                        <table class="table">
 
-                        <tr>
-                            <th>Voucher</th>
-                            <th>Rate</th>
-                            <th>Notes</th>
+                            <tr>
+                                <th>Voucher</th>
+                                <th>Rate</th>
+                                <th>Notes</th>
 
-                        </tr>
-                        {% set counter =0 %}
-                        {% for result in results %}
-                             {% if result.rate >0 %}
-                                {% set one = 1 %}
-                            {% else %}
-                                {% set one = 0 %}
-                                {% endif %}
-                            {% set counter = ( counter | default(0) ) + one %}
+                            </tr>
+                            {% set counter =0 %}
+                            {% for result in results %}
+                                {% set counter = ( counter | default(0) ) + 1 %}
 
                             <tr>
                                 <td><b>{{ counter }}. </b>  {{  result.voucher }}</td>
@@ -57,11 +52,11 @@
                                 <td>{{ result.msg }}</td>
 
                             </tr>
-                        {% endfor %}
-                        <tr><td colspan="2"><hr style="border:2px double #aaa"></td></tr>
-                        <tr style="font-weight: bold"><td>Total</td><td colspan="2">{{ total | number_format(0, '.', ',')}} </td><td>Count {{ counter }}</td></tr>
-                        <tr><td><A  href="javascript:window.print()"><button class="btn btn-success">Print This Page</button></A></td></tr>
-                    </table>
+                            {% endfor %}
+                            <tr><td colspan="2"><hr style="border:2px double #aaa"></td></tr>
+                            <tr style="font-weight: bold"><td>Total</td><td colspan="2">{{ total | number_format(0, '.', ',')}} </td><td>Count {{ counter }}</td></tr>
+                            <tr><td><A  href="javascript:window.print()"><button class="btn btn-success">Print This Page</button></A></td></tr>
+                        </table>
 
 
 

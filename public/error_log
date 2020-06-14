@@ -1292,3 +1292,4 @@
 [13-Jun-2020 11:07:59 America/Boise] PHP Warning:  Invalid argument supplied for foreach() in /home1/likejagg/public_html/slim2/src/Model/Report.php on line 50
 [13-Jun-2020 11:11:29 America/Boise] PHP Warning:  Invalid argument supplied for foreach() in /home1/likejagg/public_html/slim2/src/Model/Report.php on line 50
 [13-Jun-2020 11:48:05 America/Boise] PHP Warning:  Invalid argument supplied for foreach() in /home1/likejagg/public_html/slim2/src/Model/Report.php on line 50
+[13-Jun-2020 21:16:27 America/Boise] PHP Warning:  Invalid argument supplied for foreach() in /home1/likejagg/public_html/slim2/src/Model/Report.php on line 50
