@@ -16,8 +16,10 @@
                     <div class="col-md-3">{{ item.title }}</div>
 
                     <div class="col-md-3"> {{ item.expiry_date }}</div>
+                    {% if admin == 'admin' %}
                     <div class="col-md-2"><a href="edit/{{ item.id }}"><button class="btn btn-primary">Edit</button></a></div>
                     <div class="col-md-2"><a href="delete/{{ item.id }}"><button class="btn btn-danger">Delete</button></a></div>
+                    {% endif %}
                     <div class="col-md-2"><a href="../report/{{ item.id }}"><button class="btn btn-warning">Report</button></a></div>
 
 

@@ -23,10 +23,12 @@
 
     {% else %}
         <div>
-            <a href="{{ path_for('campaign') }}">campaigns</a> | <a href="{{ path_for('listit') }}">list</a> | <a href="{{ path_for('home') }}">redeem</a>
-            | <a href="{{ path_for('print') }}">print</a>
+            {% if admin != 'report' %}|
+            <a href="{{ path_for('campaign') }}">campaigns</a> |
+            <a href="{{ path_for('print') }}">print</a>| <a href="{{base_url()}}/admin/print/print/-1?campaign={{ c_id }}&submit=print">show all</a>
+            {% endif %}
+            | <a href="{{ path_for('listit') }}">list</a> | <a href="{{ path_for('home') }}">redeem</a>
 
-                | <a href="{{base_url()}}/admin/print/print/-1?campaign={{ c_id }}&submit=print">show all</a>
             | <a href="{{ path_for('logout') }}">logout</a> ~
             You are logged in {{ admin }}
 

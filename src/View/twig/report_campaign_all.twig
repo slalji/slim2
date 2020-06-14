@@ -1,0 +1,65 @@
+
+{% block head %}
+{% include "_base.twig" %}
+{% endblock %}
+
+{% block body %}
+    <style>
+        .col-xs-4{
+            padding:10px;
+            xmargin:10px;
+            border-left:1px #ccc solid;
+            width:200px;
+        }
+        th{
+            font-weight: bold;
+            text-align: center;
+            background:#ccc;
+            border:2px solid;
+        }
+    </style>
+    {% block contents %}
+        <div class="container">
+            {% include "partials/nav.twig" %}
+            <div class="card-header">
+                <span style="color:green"><h1>{{ page_h1 }}</h1></span>
+                <a href="/admin/report/{{ cid }}">Back to Reports</a><form action="./{{ cid }}">
+                    <input class="btn btn-info" type="submit" name="download" value="Download">
+                </form>
+            </div>
+        </div>
+        <div class="clear"><p></p></div>
+        <div class="form-group row">
+            <div class="col-sm-12" >
+                <table class="row" style="border:1px dashed bisque; margin-left:50px;">
+                                        <tr>
+                                            <th></th>
+                                            <th>Campaign</th><th>ID</th><th>Receipt</th>
+                                            <th>Total</th><th>Redeem on</th>
+                                        </tr>
+                                        {% set counter =0 %}
+
+
+
+                                        {% for item in content %}
+                                        {% set counter = ( counter | default(0) ) + 1 %}
+                                        <tr>
+
+                                                <td class="col-xs-4">{{ counter }}</td>
+                                                <td class="col-xs-4">{{ item.campaign }}</td>
+                                                <td class="col-xs-4">{{ item.id }}</td>
+                                                <td class="col-xs-4">{{ item.receipt }}</td>
+                                                <td class="col-xs-4">{{ item.total |number_format(0, '.', ',') }}</td>
+                                                <td class="col-xs-4">{{ item.redeem_date }}</td>
+
+
+
+                                            {% endfor %}
+                                        </tr></table>
+            </div>
+
+        </div>
+
+
+    {% endblock %}
+{% endblock %}

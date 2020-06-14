@@ -79,7 +79,31 @@ class CampaignController extends Controller
 		];
 		return $this->view->render($response, 'redeem.twig', $page_data);
 	}
+private function addToReceipt($params){
+	$report = new Report($this->container);
+	$check = json_decode($report->checkExists($params['redeem_id']));
 
+	if($check->code == 200){
+		$report->updatetReceiptValues(
+			['redeem_date'=>$params['redeem_date'],
+				'redeem_id'=>$params['redeem_id'],
+				'user_name'=>$params['user_name'],
+				'user_phone'=>$params['user_phone'],
+				'user_comment'=>$params['user_comment']
+			],$params['redeem_id']);
+	}
+
+	else{
+		$report->insertReceiptValues(
+			['redeem_date'=>$params['redeem_date'],
+				'redeem_id'=>$params['redeem_id'],
+				'user_name'=>$params['user_name'],
+				'user_phone'=>$params['user_phone'],
+				'user_comment'=>$params['user_comment']
+			]);
+
+	}
+}
 	/**
 	 * @param Request $request
 	 * @param Response $response
@@ -109,12 +133,35 @@ class CampaignController extends Controller
 		for($i=0; $i < sizeof($vouchers); $i++){
 			$cart[] = ['voucher'=>$vouchers[$i],'rate'=>$rates[$i],'msg'=>$msg[$i]];
 		}
-		//var_dump($params); die;
+
 		unset($params['submit']);
+
 		$report = new Report($this->container);
-		$check = $report->checkExists($params['redeem_id']);
-		var_dump($check); die;
-		$report->insertReceiptValues($params);
+		$check = json_decode($report->checkExists($params['redeem_id']));
+
+		if($check->code == 200){
+			$report->updatetReceiptValues(
+				['redeem_date'=>$params['redeem_date'],
+					'redeem_id'=>$params['redeem_id'],
+					'user_name'=>$params['user_name'],
+					'user_phone'=>$params['user_phone'],
+					'user_comment'=>$params['user_comment'],
+					'total'=>$total
+				],$params['redeem_id']);
+		}
+
+		else{
+			$report->insertReceiptValues(
+				['redeem_date'=>$params['redeem_date'],
+					'redeem_id'=>$params['redeem_id'],
+					'user_name'=>$params['user_name'],
+					'user_phone'=>$params['user_phone'],
+					'user_comment'=>$params['user_comment'],
+					'total'=>$total
+				]);
+
+		}
+
 
 
 		$page_data = [
@@ -537,13 +584,7 @@ class CampaignController extends Controller
 					return $response->withRedirect('./');
 				}
 
-        elseif ($params['submit'] == 'Stop'){
-        	var_dump('clicked stop');
-        	var_dump($request->getParams());
-        	var_dump(__FILE__.' '.__LINE__);
 
-        	die();
-				}
 				session_start();
 				$v = explode('-', $params['voucher']);
 
@@ -561,7 +602,7 @@ class CampaignController extends Controller
 							$rate = json_decode($updated)->rate;
 
 							$_SESSION['cart'][]=['voucher'=>$params['voucher'],'rate'=>$rate,'msg'=>$msg];
-
+							//var_dump($params); die;
 
 
 							$page_data = [

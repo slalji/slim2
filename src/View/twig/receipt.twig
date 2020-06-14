@@ -27,12 +27,9 @@
 
                 <div id="result">
 
-                    <h1 >Receipt</h1>
-                    <h5><label>No.:</label> {{ redeem_id }}</h5>
-                    
-                    <h5><label>Date:</label> {{ date }}</h5>
-                    <h5><label>Name:</label> {{ user_name }}</h5>
-                    <h5><label>Phone No.:</label> {{ user_phone }}</h5>
+                    <h1><text x="0" y="15" fill="green" style="font-size:36px; font-weight: bold; ">KL Coffee Estate</text> Receipt</h1>
+                    <h5><label>No.:</label> {{ redeem_id }} | <label>Date:</label> {{ date }}</h5>
+                    <h5><label>Name:</label> {{ user_name }} | <label>Phone No.:</label> {{ user_phone }}</h5>
                     <h5><label>Comment:</label> {{ user_comment }}</h5>
 
 
@@ -45,19 +42,20 @@
                                 <th>Notes</th>
 
                             </tr>
+                            {% set counter =0 %}
                             {% for result in results %}
+                                {% set counter = ( counter | default(0) ) + 1 %}
 
                             <tr>
-                                <td>{{ result.voucher }}</td>
+                                <td><b>{{ counter }}. </b>  {{  result.voucher }}</td>
                                 <td>{{ result.rate }}</td>
                                 <td>{{ result.msg }}</td>
 
                             </tr>
                             {% endfor %}
                             <tr><td colspan="2"><hr style="border:2px double #aaa"></td></tr>
-                            <tr style="font-weight: bold"><td>Total</td><td colspan="2">{{ total }}</td></tr>
-                            <!--<tr><td><input type="submit" class="btn btn-success mb-2 stop" id="stop"  name="submit"  value="Print PDF"/></td></tr>
-                            --><tr><td><A  href="javascript:window.print()"><button class="btn btn-success">Print This Page</button></A></td></tr>
+                            <tr style="font-weight: bold"><td>Total</td><td colspan="2">{{ total | number_format(0, '.', ',')}} </td><td>Count {{ counter }}</td></tr>
+                            <tr><td><A  href="javascript:window.print()"><button class="btn btn-success">Print This Page</button></A></td></tr>
                         </table>
 
 

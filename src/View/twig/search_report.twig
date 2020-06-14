@@ -1,0 +1,81 @@
+
+{% block head %}
+{% include "_base.twig" %}
+{% endblock %}
+
+{% block body %}
+
+    {% block contents %}
+        {% include "partials/nav.twig" %}
+        <div class="container">
+
+            <div class="card-header">
+                <span style="color:green"><h1>{{ page_h1 }}</h1></span>
+                Report for Search item: {{ item }}
+            </div>
+
+        <div class="clear"><p></p></div>
+        <div class="form-group row">
+            <div class="col-sm-12" >
+
+                <div class="card">
+                    <div class="card-body row">
+                        <form id="form-search" name="form-search" action="./{{ cid }}/results" method="get">
+                            <div class="form-group row">
+
+                                <div class="col-sm-12">
+
+
+                                        {% if len > 0 %}
+                                        <ul>
+                                            <li><b>Voucher</b> {{ qr }}</li>
+                                            <li><b>Rate</b> {{ rate }}</li>
+                                            <li><b>Receipt Number</b> {{ redeem_id }}</li>
+                                            <li><b>Name</b> {{ name }}</li>
+                                            <li><b>Phone Number</b> {{ phone }}</li>
+                                            <li><b>Comment</b> {{ comment }}</li>
+
+                                        </ul>
+                                            {% else %}
+                                            <ul>
+                                                <li>No results for this search item</li>
+                                            </ul>
+                                        {% endif %}
+
+
+
+                                </div>
+                            </div>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+<style>
+    .col-xs-4{
+        padding:10px;
+        xmargin:10px;
+        border-left:1px #ccc solid;
+        width:200px;
+    }
+    th{
+        font-weight: bold;
+        text-align: center;
+        background:#ccc;
+        border:2px solid;
+    }
+</style>
+
+
+                            </div>
+        </div>
+        </div>
+
+    {% endblock %}
+{% endblock %}

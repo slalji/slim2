@@ -21,25 +21,97 @@ class ReportController extends Controller
     protected $pdo = null;
     protected $c_id = '';
 
-    public function __invoke(Request $request, Response $response)
+  public function __invoke(Request $request, Response $response)
     {
 			$this->view = $this->container->get('view');
 			$this->pdo = $this->container->get('db');
 			$cid = $request->getAttribute('cid');
+			$date = date('Y-m-d');
 
 			$class = new Report($this->container);
-			$report = json_decode($class->redeemedByCID($cid), true);
+			$report = ['By Receipt Numbers'=>'all/'.$cid,'By Name'=>'name/'.$cid];
 
 
         $page_data = [
-            'page_h1' => 'Report Campaign By ID',
-            'content' => $report,
+            'page_h1' => 'Reports ',
+            'cid' => $cid,
+						'content'=>$report,
 						'admin' => $_SESSION['auth'],
 						'time' => date('H:i:s',$_SESSION['time'])
         ];
         //var_dump($page_data['content']); die;
-        return $this->view->render($response, 'report.twig', $page_data);
+        return $this->view->render($response, 'report_home.twig', $page_data);
     }
+	public function name(Request $request, Response $response)
+	{
+		$this->view = $this->container->get('view');
+		$this->pdo = $this->container->get('db');
+		$cid = $request->getAttribute('cid');
+		$download = $request->getParam('download');
+		$date = date('Y-m-d');
+
+		$class = new Report($this->container);
+		$results = json_decode($class->redeemedByReceipt($cid), true);
+		$headings = array_keys($results[0]);
+		if ($download != 'Download'){
+			$page_data = [
+				'page_h1' => 'Reports ',
+				'cid' => $cid,
+				'content'=>$results,
+				'admin' => $_SESSION['auth'],
+				'time' => date('H:i:s',$_SESSION['time'])
+			];
+			//var_dump($page_data['content']); die;
+			return $this->view->render($response, 'report.twig', $page_data);
+		}
+		else{
+			//var_dump($download); die;
+			//@header("Content-Disposition: attachment; filename=export.csv");
+//			header('Content-Type: text/csv; charset=utf-8');
+//			header('Content-Disposition: attachment; filename=export.csv');
+			$filename = 'export.csv';
+
+			$data = fopen($filename, 'w');
+			foreach($headings as $h){
+
+				echo  $h . ", ";
+				fputcsv($data, $h, ',', '"');
+			}
+			foreach($results as $item) {
+				echo "\r\n";
+				foreach($item as $row){
+
+					echo  $row . ", ";
+					fputcsv($data, $row, ',', '"');
+				}
+
+			}
+			fclose($data);
+
+		}
+
+		
+	}
+
+	public function CampaignID(Request $request, Response $response)
+	{
+		$this->view = $this->container->get('view');
+		$this->pdo = $this->container->get('db');
+		$cid = $request->getAttribute('cid');
+
+		$class = new Report($this->container);
+		$report = json_decode($class->redeemedByCID($cid), true);
+
+
+		$page_data = [
+			'page_h1' => 'Report Campaign By ID',
+			'content' => $report,
+			'admin' => $_SESSION['auth'],
+			'time' => date('H:i:s',$_SESSION['time'])
+		];
+		//var_dump($page_data['content']); die;
+		return $this->view->render($response, 'report.twig', $page_data);
+	}
 
     /**
      * @param $request
@@ -47,159 +119,137 @@ class ReportController extends Controller
      * @return mixed
      * @throws \Exception
      */
-    public function printit($request, $response, $args)
+    public function search($request, $response, $args)
     {
         $content = [];
         $this->view = $this->container->get('view');
         $params = $request->getParams();
-        $c_id = $params['campaign'];
-        $method = $params['submit'];
-        var_dump($method); die();
+        $c_id = $params['cid'];
+        $needle = $params['search'];
+			var_dump('search function');
+var_dump($params); die();
 
-        $page = empty($args['page'])?0:$args['page'];
-
-
-        $class = new Campaign($this->container);
-        $perPage=empty($args['perPage'])?10:$args['perPage'];;
-				$startAt = $perPage * ($page);
+        $class = new Report($this->container);
 
         try {
+        	unset($params['submit']);
 
-            $results = $class->getVouchers($c_id, $perPage,$startAt);
-            $total = $class->getTotalVouchers($c_id);
-
-						$barcode = array();
+            $results = $class->search($params);
 
             $results = json_decode($results);
-
-            if($method === 'download') {
-							foreach ($results as $res) {
-								$barcode[] = $res->prefix . $res->voucher . $res->sufix;
-							}
-
-							// output headers so that the file is downloaded rather than displayed
-							header('Content-Type: text/csv; charset=utf-8');
-							header('Content-Disposition: attachment; export.csv');
-
-							$output = fopen('php://output', 'w');
-
-							fputcsv($output, $barcode);
-
-						}
+					var_dump($results->message); die();
+					$page_data = [
+						'page_h1' => 'Search Reports',
+						'content'=>$results->message,
+						'admin' => $_SESSION['auth'],
+						'time' => date('H:i:s',$_SESSION['time'])
+					];
+					//var_dump($page_data['content']); die;
+					return $this->view->render($response, 'search_report.twig', $page_data);
 
 
-					$generator = new \Com\Tecnick\Barcode\Barcode();
 
-
-					foreach ($results as $res){
-						$voucher='';
-						$voucher .= $res->prefix === ''?'':$res->prefix;
-						$voucher .= $res->voucher === ''?'':'-'.$res->voucher;
-						$voucher .= $res->sufix === ''?'':'-'.$res->sufix;
-
-						$bobj = $generator->getBarcodeObj(
-								'QRCODE,H',                     // barcode type and additional comma-separated parameters
-								$voucher,          // data string to encode
-								-4,                             // bar width (use absolute or negative value as multiplication factor)
-								-4,                             // bar height (use absolute or negative value as multiplication factor)
-								'black',                        // foreground color
-								array(-2, -2, -2, -2)           // padding (use absolute or negative values as multiplication factors)
-							)->setBackgroundColor('white'); // background color
-
-						$img = "<img alt=\"Embedded Image\" src=\"data:image/png;base64,".base64_encode($bobj->getPngData())."\" />";
-
-						$barcode[] = ['id'=>$res->id,'expiry'=>$res->expiry_date,'barcode'=>$bobj->getHtmlDiv(),'data'=>$bobj->getPngData(),'img'=>$img, 'voucher'=>$voucher];
-
-						}
-
-            if (sizeof($barcode) > 0) {
-                $page_data = [
-                    'page_h1' => 'Print Vouchers',
-                    'content' => $barcode,
-										'page' => $page,
-										'total' => $total,
-										'c_id'=>$c_id,
-										'admin' => $_SESSION['auth'],
-										'time' => date('H:i:s',$_SESSION['time'])
-
-                ];
-							//$bobj = $barcode->getBarcodeObj('QRCODE,H', 'hello world', -4, -4, 'black');
-							//echo "<img alt=\"Embedded Image\" src=\"data:image/png;base64,".base64_encode($bobj->getPngData())."\" />";
-
-
-                return $this->view->render($response, 'print_vouchers.twig', $page_data);
-            } else {
-                $page_data = [
-                    'page_h1' => 'Error while printing Vouchers',
-                    'content' => $content
-                ];
-
-                return $this->view->render($response, 'error.twig', $page_data);
-            }
-
-        } catch (\Exception $e) {
+				} catch (\Exception $e) {
             return json_encode(['code' => $e->getCode(), 'message' => $e->getMessage()]);
         }
     }
+	public function results($request, $response, $args)
+	{
+		$content = [];
+		$this->view = $this->container->get('view');
+		$params = $request->getParams();
+		$c_id = $params['cid'];
+		$needle = $params['search'];
 
 
-    /** @param $request
-     * @param $response
-     * @return mixed
-     * @throws \Exception
-     */
-    public function checkVoucher($request, $response)
-    {
+		$class = new Report($this->container);
 
-			$voucher = '';
-        $this->view = $this->container->get('view');
-        $params = $request->getParams();
+		try {
+			unset($params['submit']);
 
-        $password = "5xKu1WjoEJj4qptK";
-        $class = new Campaign($this->container);
-            //$params = ['prefix' => $voucher[0], 'voucher' => $voucher[1], 'sufix' => $voucher['sufix'], 'redeem_date' => $redeem_date];
-
-					try {
-							$valid = $class->validateVoucher($params);
+			$results = $class->search($params);
+			$results = json_decode($results)->message;
+			$len = $total = count((array)$results);
 
 
-						 if (json_decode($valid)->code == 200)
-						 	$exists = $class->voucher_exists($params['voucher']);
+			$page_data = [
+				'page_h1' => 'Search Reports',
+				'len' => $len,
+				'item' => $params['search'],
+				'qr'=>$results->qr,
+				'rate'=>$results->rate,
+				'redeem_id'=>$results->redeem_id,
+				'name'=>$results->user_name,
+				'phone'=>$results->user_phone,
+				'comment'=>$results->user_comment,
+				'admin' => $_SESSION['auth'],
+				'time' => date('H:i:s',$_SESSION['time'])
+			];
+			//var_dump($page_data['content']); die;
+			return $this->view->render($response, 'search_report.twig', $page_data);
 
 
-						if (json_decode($exists)->code == 200)
-							$updated = $class->updateVouchers($params);
+
+		} catch (\Exception $e) {
+			return json_encode(['code' => $e->getCode(), 'message' => $e->getMessage()]);
+		}
+	}
+	public function all($request, $response, $args){
+		$this->view = $this->container->get('view');
+		$this->pdo = $this->container->get('db');
+		$class = new Report($this->container);
 
 
-						elseif (json_decode($exists)->code != 200)
-							throw new \Exception(json_decode($exists)->message, json_decode($exists)->code);
+		$c_id = $args['cid'];
+		$download = $request->getParam('download');
+
+		$results = $class->redeemedByCID($c_id);
+		$results = json_decode($results, true);
+		$headings = array_keys($results[0]);
 
 
-						$page_data = [
-								'page_h1' => 'Voucher Redeemed',
-								'result' => json_decode($updated)->message,
-							'admin' => $_SESSION['auth'],
-							'time' => date('H:i:s',$_SESSION['time'])
-						];
+		if ($download != 'Download'){
+			$page_data = [
+				'page_h1' => 'All Reports',
+				'content'=>$results,
+				'cid'=>$c_id,
+				'admin' => $_SESSION['auth'],
+				'time' => date('H:i:s',$_SESSION['time'])
+			];
+			//var_dump($page_data['content']); die;
+			return $this->view->render($response, 'report_campaign_all.twig', $page_data);
+		}
+		else{
+			//var_dump($download); die;
+			//@header("Content-Disposition: attachment; filename=export.csv");
+//			header('Content-Type: text/csv; charset=utf-8');
+//			header('Content-Disposition: attachment; filename=export.csv');
+			$filename = 'export.csv';
 
-						return $this->view->render($response, 'redeem.twig', $page_data);
+
+			$data = fopen($filename, 'w');
+			foreach($headings as $h){
+
+				echo  $h . ", ";
+				fputcsv($data, $h, ',', '"');
+			}
+			foreach($results as $item) {
+				echo "\r\n";
+				foreach($item as $row){
+
+					echo  $row . ", ";
+					fputcsv($data, $row, ',', '"');
+				}
+
+			}
+
+			fclose($data);
+
+		}
 
 
-					}
-					catch (\Exception $e) {
+	}
 
-						$page_data = [
-							'page_h1' => 'Error while redeeming Vouchers ',
-							'result' => $voucher.$e->getMessage()
-						];
-						return $this->view->render($response, 'error.twig', $page_data);
-					}
-    }
 
-    /*public function allCampaigns($request, $response){
-			$class = new Campaign($this->container);
-			$result = $class->allCampagins();
-			echo $result;
-		}*/
 
 }

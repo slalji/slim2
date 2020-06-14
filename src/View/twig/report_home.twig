@@ -11,7 +11,7 @@
             <div class="card-header">
                 {% include "partials/nav.twig" %}
                 <span style="color:green"><h1>{{ page_h1 }}</h1></span>
-                <a href="/admin/report/{{ cid }}">Back to Reports</a>
+                Reports for user {{ admin }}
             </div>
 
         <div class="clear"><p></p></div>
@@ -22,31 +22,27 @@
                     <div class="card-body row">
                         <form id="form-search" name="form-search" action="./{{ cid }}/results" method="get">
                             <div class="form-group ">
-                                <!--<label for="Name" class="col-sm-10 col-form-label">Search Campaign {{ title }}</label>
-                                <div class="col-sm-10">
-                                    <div id="print" name="campaign" class="print form-control">
-
-                                            <label>By Receipt No., Name, Phone</label>
-
-                                            <input type="hidden" name="cid" id="cid" value="{{ cid }}">
-                                            <input type="text" name="search" id="search">
-
-                                            <input class="btn btn-info" type="submit" value="Search" name="submit">
+                                <label for="Name" class="col-sm-12 col-form-label">List of Reports  {{ title }}</label>
+                                <div class="col-sm-12">
 
 
-                                    </div>
+                                        {% for key,value in content %}
+                                            <p>Report :  <a href="{{ value }}">{{ key }}</a>
+
+                                        {% endfor %}
+
+
 
                                 </div>
-                                -->
+                                <!--
                                 <label>{{ title }}</label>
                                 <table><th>Title</th>
                                     <th>id</th>
                                     <th>Total</th>
                                     <th>Date</th>
                                     <th>Receipt</th>
-
-                                    <th>Name</th>
                                     <th>Mobile</th>
+                                    <th>Name</th>
                                     <th>Comment</th>
 
                                     {% for item in content %}
@@ -61,11 +57,9 @@
                                     </tr>
                                 {% endfor %}
                                 </table>
+                                -->
                             </div>
 
-                        </form>
-                        <form action="./{{ cid }}">
-                            <input class="btn btn-info" type="submit" name="download" value="Download">
                         </form>
 
 
@@ -81,7 +75,7 @@
         padding:10px;
         xmargin:10px;
         border-left:1px #ccc solid;
-        width:200px;
+        xwidth:200px;
     }
     th{
         font-weight: bold;
