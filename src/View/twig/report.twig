@@ -12,6 +12,9 @@
                 {% include "partials/nav.twig" %}
                 <span style="color:green"><h1>{{ page_h1 }}</h1></span>
                 <a href="/admin/report/{{ cid }}">Back to Reports</a>
+               <form action="./{{ cid }}">
+                            <input class="btn btn-info" type="submit" name="download" value="Download">
+                        </form>
             </div>
 
         <div class="clear"><p></p></div>
@@ -42,6 +45,7 @@
                                 <table><th>Title</th>
                                     <th>id</th>
                                     <th>Total</th>
+                                    <th>Rate</th>
                                     <th>Date</th>
                                     <th>Receipt</th>
 

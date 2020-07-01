@@ -67,8 +67,8 @@ class ReportController extends Controller
 		else{
 			//var_dump($download); die;
 			//@header("Content-Disposition: attachment; filename=export.csv");
-//			header('Content-Type: text/csv; charset=utf-8');
-//			header('Content-Disposition: attachment; filename=export.csv');
+			header('Content-Type: text/csv; charset=utf-8');
+			header('Content-Disposition: attachment; filename=export.csv');
 			$filename = 'export.csv';
 
 			$data = fopen($filename, 'w');
@@ -119,33 +119,39 @@ class ReportController extends Controller
      * @return mixed
      * @throws \Exception
      */
-    public function search($request, $response, $args)
+    public function search(Request $request, Response $response)
     {
-        $content = [];
+        
+
+
+				$content = [];
         $this->view = $this->container->get('view');
         $params = $request->getParams();
         $c_id = $params['cid'];
-        $needle = $params['search'];
-			var_dump('search function');
-var_dump($params); die();
-
+        $needle = $request->getParam('needle');
+//var_dump($needle); die;
         $class = new Report($this->container);
 
         try {
         	unset($params['submit']);
 
-            $results = $class->search($params);
+            $results = $class->search($needle);
 
             $results = json_decode($results);
-					var_dump($results->message); die();
+					//var_dump($results->message); die();
 					$page_data = [
 						'page_h1' => 'Search Reports',
-						'content'=>$results->message,
+						'content'=> $results->message,
 						'admin' => $_SESSION['auth'],
 						'time' => date('H:i:s',$_SESSION['time'])
 					];
-					//var_dump($page_data['content']); die;
-					return $this->view->render($response, 'search_report.twig', $page_data);
+					foreach($results->message as $item =>$val ){
+    echo '<pre>';
+    print_r($item .' : '.$val);
+    echo '</pre>';
+    
+}die;
+					return $this->view->render($response, 'report_search.twig', $page_data);
 
 
 
@@ -222,8 +228,8 @@ var_dump($params); die();
 		else{
 			//var_dump($download); die;
 			//@header("Content-Disposition: attachment; filename=export.csv");
-//			header('Content-Type: text/csv; charset=utf-8');
-//			header('Content-Disposition: attachment; filename=export.csv');
+			header('Content-Type: text/csv; charset=utf-8');
+			header('Content-Disposition: attachment; filename=export.csv');
 			$filename = 'export.csv';
 
 

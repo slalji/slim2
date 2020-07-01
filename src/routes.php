@@ -39,9 +39,10 @@ $app->group('/admin', function () {
 	$this->get('/print/print[/{page}]', App\Controller\PrintController::class .':printit')->setName('printit');
 	$this->get('/print/printall[/{page}]', App\Controller\PrintController::class .':printit')->setName('printall');
 
-//	$this->get('/report/{cid}', App\Controller\ReportController::class )->setName('report');
-//	$this->get('/report/all/{cid}', App\Controller\ReportController::class . ":all")->setName('all');
-//	$this->get('/report/name/{cid}', App\Controller\ReportController::class .":name")->setName('report');
-	//$this->get('/report/name/download{cid}', App\Controller\ReportController::class .":name")->setName('report');
+	$this->get('/report/{cid}', App\Controller\ReportController::class )->setName('report');
+	$this->get('/report/all/{cid}', App\Controller\ReportController::class . ":all")->setName('all');
+	$this->get('/report/name/{cid}', App\Controller\ReportController::class .":name")->setName('report');
+	$this->get('/report/name/download{cid}', App\Controller\ReportController::class .":name")->setName('report');
+	$this->post('/report/search/{cid}', App\Controller\ReportController::class .":search")->setName('search');
 
 })->add(new AuthMiddleware($container));

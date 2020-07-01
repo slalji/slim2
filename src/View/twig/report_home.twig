@@ -34,6 +34,7 @@
 
 
                                 </div>
+
                                 <!--
                                 <label>{{ title }}</label>
                                 <table><th>Title</th>
@@ -64,6 +65,11 @@
 
 
                     </div>
+                    <form action="./search/{{cid}}" method="post">
+                                <label for="Search" class="col-sm-12 col-form-label">Search receipt by ID</label>
+                                <input type="text" required name="needle">
+                                <input type="submit" name="submit">
+                                </form>
                 </div>
             </div>
         </div>

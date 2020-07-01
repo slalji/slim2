@@ -25,22 +25,14 @@
 
                                 <div class="col-sm-12">
 
-
-                                        {% if len > 0 %}
-                                        <ul>
-                                            <li><b>Voucher</b> {{ qr }}</li>
-                                            <li><b>Rate</b> {{ rate }}</li>
-                                            <li><b>Receipt Number</b> {{ redeem_id }}</li>
-                                            <li><b>Name</b> {{ name }}</li>
-                                            <li><b>Phone Number</b> {{ phone }}</li>
-                                            <li><b>Comment</b> {{ comment }}</li>
-
-                                        </ul>
-                                            {% else %}
+                                            
+                                   
+                                        {%for items in content| keys %}
                                             <ul>
-                                                <li>No results for this search item</li>
+                                                <li><b>{{key}}</b> {{ content }}</li>
                                             </ul>
-                                        {% endif %}
+                                        {%endfor%}
+                                    
 
 
 
