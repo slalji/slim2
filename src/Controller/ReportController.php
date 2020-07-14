@@ -90,7 +90,57 @@ class ReportController extends Controller
 
 		}
 
-		
+
+	}
+	public function receipt(Request $request, Response $response)
+	{
+		$this->view = $this->container->get('view');
+		$this->pdo = $this->container->get('db');
+		$cid = $request->getAttribute('cid');
+		$download = $request->getParam('download');
+		$date = date('Y-m-d');
+
+		$class = new Report($this->container);
+		$results = json_decode($class->redeemedByReceipt($cid), true);
+		$headings = array_keys($results[0]);
+		if ($download != 'Download'){
+			$page_data = [
+				'page_h1' => 'Reports ',
+				'cid' => $cid,
+				'content'=>$results,
+				'admin' => $_SESSION['auth'],
+				'time' => date('H:i:s',$_SESSION['time'])
+			];
+			//var_dump($page_data['content']); die;
+			return $this->view->render($response, 'report_receipt.twig', $page_data);
+		}
+		else{
+			//var_dump($download); die;
+			//@header("Content-Disposition: attachment; filename=export.csv");
+			header('Content-Type: text/csv; charset=utf-8');
+			header('Content-Disposition: attachment; filename=export.csv');
+			$filename = 'export.csv';
+
+			$data = fopen($filename, 'w');
+			foreach($headings as $h){
+
+				echo  $h . ", ";
+				fputcsv($data, $h, ',', '"');
+			}
+			foreach($results as $item) {
+				echo "\r\n";
+				foreach($item as $row){
+
+					echo  $row . ", ";
+					fputcsv($data, $row, ',', '"');
+				}
+
+			}
+			fclose($data);
+
+		}
+
+
 	}
 
 	public function CampaignID(Request $request, Response $response)
