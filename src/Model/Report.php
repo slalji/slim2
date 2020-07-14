@@ -31,13 +31,25 @@ class Report
 
 
 	}
-	public function redeemedByReceipt( $cid){
+	public function redeemedByName( $cid){
 
 		//$sql = "SELECT title, campaign, CONCAT(prefix,'-',voucher,'-',sufix) as qr, sum (vouchers.rate) as total, redeem_date, redeem_id from vouchers JOIN campaigns on vouchers.campaign= campaigns.id where redeem != 0 and campaign =$cid and redeem_id = $rid ORDER BY `campaign` DESC" ;
 		//$sql = "SELECT redeem_date, redeem_id, user_name, user_phone, total from receipt";
 		$sql = "SELECT title, campaign,  SUM(vouchers.rate) as total, vouchers.rate, vouchers.redeem_date, vouchers.redeem_id, user_name, user_phone, user_comment from vouchers JOIN campaigns on vouchers.campaign= campaigns.id 
 join receipt on receipt.redeem_id = vouchers.redeem_id
 where redeem != 0 and campaign =:cid group by redeem_id order by user_name ASC";
+		$stmt = $this->conn->prepare( $sql );
+		$stmt->bindParam( ":cid", $cid, PDO::PARAM_INT );
+		$stmt->execute();
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return json_encode($result);
+	}
+	public function redeemedByReceipt( $cid){
+
+		//$sql = "SELECT title, campaign, CONCAT(prefix,'-',voucher,'-',sufix) as qr, sum (vouchers.rate) as total, redeem_date, redeem_id from vouchers JOIN campaigns on vouchers.campaign= campaigns.id where redeem != 0 and campaign =$cid and redeem_id = $rid ORDER BY `campaign` DESC" ;
+		//$sql = "SELECT redeem_date, redeem_id, user_name, user_phone, total from receipt";
+		$sql = "select campaigns.id, campaigns.rate, vouchers.redeem_id, vouchers.redeem_date, count(campaigns.rate) as count ,sum(campaigns.rate) as total from campaigns join vouchers on campaigns.id=vouchers.campaign where vouchers.redeem=1 group by vouchers.redeem_id, campaigns.rate ORDER BY `vouchers`.`redeem_id` DESC";
 		$stmt = $this->conn->prepare( $sql );
 		$stmt->bindParam( ":cid", $cid, PDO::PARAM_INT );
 		$stmt->execute();

@@ -42,6 +42,7 @@ $app->group('/admin', function () {
 	$this->get('/report/{cid}', App\Controller\ReportController::class )->setName('report');
 	$this->get('/report/all/{cid}', App\Controller\ReportController::class . ":all")->setName('all');
 	$this->get('/report/name/{cid}', App\Controller\ReportController::class .":name")->setName('report');
+	$this->get('/report/receipt/', App\Controller\ReportController::class .":receipt")->setName('receipt');
 	$this->get('/report/name/download{cid}', App\Controller\ReportController::class .":name")->setName('report');
 	$this->post('/report/search/{cid}', App\Controller\ReportController::class .":search")->setName('search');
 
