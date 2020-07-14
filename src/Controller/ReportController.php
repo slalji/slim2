@@ -51,7 +51,7 @@ class ReportController extends Controller
 		$date = date('Y-m-d');
 
 		$class = new Report($this->container);
-		$results = json_decode($class->redeemedByReceipt($cid), true);
+		$results = json_decode($class->redeemedByName($cid), true);
 		$headings = array_keys($results[0]);
 		if ($download != 'Download'){
 			$page_data = [
