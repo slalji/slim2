@@ -31,7 +31,7 @@ class Report
 
 
 	}
-	public function redeemedByReceipt( $cid){
+	public function redeemedByName( $cid){
 
 		//$sql = "SELECT title, campaign, CONCAT(prefix,'-',voucher,'-',sufix) as qr, sum (vouchers.rate) as total, redeem_date, redeem_id from vouchers JOIN campaigns on vouchers.campaign= campaigns.id where redeem != 0 and campaign =$cid and redeem_id = $rid ORDER BY `campaign` DESC" ;
 		//$sql = "SELECT redeem_date, redeem_id, user_name, user_phone, total from receipt";
