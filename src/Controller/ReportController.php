@@ -105,7 +105,7 @@ class ReportController extends Controller
 		$headings = array_keys($results[0]);
 		if ($download != 'Download'){
 			$page_data = [
-				'page_h1' => 'Report By Receipt, #of Vouchers and Total ',
+				'page_h1' => 'Reports',
 				'cid' => $cid,
 				'content'=>$results,
 				'admin' => $_SESSION['auth'],
@@ -179,7 +179,6 @@ class ReportController extends Controller
         $params = $request->getParams();
         $c_id = $params['cid'];
         $needle = $request->getParam('needle');
-//var_dump($needle); die;
         $class = new Report($this->container);
 
         try {

@@ -49,19 +49,14 @@
                                 count
                                 total -->
 
-                                <label>{{ title }}</label>
-                                <table><th>Title</th>
+                                <label>Report By Receipt, Voucher Count, and Total Receipt </label>
+                                <table>
                                     <th>id</th>
                                     <th>Rate</th>
                                     <th>Receipt</th>
                                     <th>Date</th>
                                     <th># of Vouchers</th>
-
-
                                     <th>Total</th>
-
-
-
                                     {% for item in content %}
                                     <tr>
                                         {% for key,value in item %}
@@ -77,9 +72,9 @@
                             </div>
 
                         </form>
-                        <form action="./{{ cid }}">
+                       <!-- <form action="./{{ cid }}">
                             <input class="btn btn-info" type="submit" name="download" value="Download">
-                        </form>
+                        </form>-->
 
 
                     </div>
