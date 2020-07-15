@@ -99,7 +99,7 @@ class ReportController extends Controller
 		$cid = $request->getAttribute('cid');
 		$download = $request->getParam('download');
 		$date = date('Y-m-d');
-
+var_dump('Receipt'); die;
 		$class = new Report($this->container);
 		$results = json_decode($class->redeemedByReceipt($cid), true);
 		$headings = array_keys($results[0]);
