@@ -29,7 +29,7 @@ class ReportController extends Controller
 			$date = date('Y-m-d');
 
 			$class = new Report($this->container);
-			$report = ['By Receipt Numbers'=>'all/'.$cid,'By Name'=>'name/'.$cid];
+			$report = ['By Receipt Numbers'=>'all/'.$cid,'By Name'=>'name/'.$cid,'By Receipt'=>'receipt/'.$cid];
 
 
         $page_data = [
@@ -105,7 +105,7 @@ class ReportController extends Controller
 		$headings = array_keys($results[0]);
 		if ($download != 'Download'){
 			$page_data = [
-				'page_h1' => 'Reports ',
+				'page_h1' => 'Report By Receipt, #of Vouchers and Total ',
 				'cid' => $cid,
 				'content'=>$results,
 				'admin' => $_SESSION['auth'],
