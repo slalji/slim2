@@ -1,6 +1,6 @@
 
 {% block head %}
-{% include "_base.twig" %}
+    {% include "_base.twig" %}
 {% endblock %}
 
 {% block body %}
@@ -12,100 +12,107 @@
                 {% include "partials/nav.twig" %}
                 <span style="color:green"><h1>{{ page_h1 }}</h1></span>
                 <a href="/admin/report/{{ cid }}">Back to Reports</a>
-               <form action="./{{ cid }}">
-                            <input class="btn btn-info" type="submit" name="download" value="Download">
-                        </form>
+                <form action="./{{ cid }}">
+                    <input class="btn btn-info" type="submit" name="download" value="Download">
+                </form>
             </div>
 
-        <div class="clear"><p></p></div>
-        <div class="form-group row">
-            <div class="col-sm-12" >
+            <div class="clear"><p></p></div>
+            <div class="form-group row">
+                <div class="col-sm-12" >
 
-                <div class="card">
-                    <div class="card-body row">
-                        <form id="form-search" name="form-search" action="./{{ cid }}/results" method="get">
-                            <div class="form-group ">
-                                <!--<label for="Name" class="col-sm-10 col-form-label">Search Campaign {{ title }}</label>
-                                <div class="col-sm-10">
-                                    <div id="print" name="campaign" class="print form-control">
+                    <div class="card">
+                        <div class="card-body row">
+                            <form id="form-receipt" name="form-receipt" action="./{{ cid }}" method="get">
+                                <div class="form-group ">
+                                    <div class="col-sm-10">
+                                        <div id="print" name="campaign" class="print form-control">
 
-                                            <label>By Receipt No., Name, Phone</label>
+                                            <label>Select Date</label>
 
                                             <input type="hidden" name="cid" id="cid" value="{{ cid }}">
-                                            <input type="text" name="search" id="search">
 
-                                            <input class="btn btn-info" type="submit" value="Search" name="submit">
+                                            <select name="r_date" id="r_date">
+                                                <option value="" required>--Choose-- </option>
+                                                
+                                                {% for dt in r_dates %}
 
+                                                    <option value="{{dt.redeem_date}}">{{dt.redeem_date}} </option>
+                                                {% endfor %}
+                                            </select>
+
+
+                                            <input class="btn btn-info" type="submit" value="Choose" name="submit">
+
+
+                                        </div>
 
                                     </div>
-
                                 </div>
-
-                                Options
-                                id
-                                rate
-                                redeem_id Descending 1
-                                redeem_date
-                                count
-                                total -->
-
-                                <label>Report By Receipt, Voucher Count, and Total Receipt </label>
-                                <table>
-                                    <th>id</th>
-                                    <th>Rate</th>
-                                    <th>Receipt</th>
-                                    <th>Date</th>
-                                    <th># of Vouchers</th>
-                                    <th>Total</th>
-                                    {% for item in content %}
-                                    <tr>
-                                        {% for key,value in item %}
-                                            {% if key =='total' %}
-                                                <td>{{ value  |number_format(0, '.', ',') }}</td>
-                                            {% else %}
-                                                <td>{{ value }}</td>
-                                            {% endif %}
-                                    {% endfor %}
-                                    </tr>
-                                {% endfor %}
-                                </table>
-                            </div>
-
-                        </form>
-                       <!-- <form action="./{{ cid }}">
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+            <label>Report By Receipt, Voucher Count, and Total Receipt </label>
+                                    <table>
+                                        <th>id</th>
+                                        <th>Rate</th>
+                                        <th>Receipt</th>
+                                        <th>Date</th>
+                                        <th># of Vouchers</th>
+                                        <th>Total</th>
+                                         <th>Name</th>
+                                          <th>Phone</th>
+                                           <th>Comment</th>
+                                        {% for item in content %}
+                                            <tr>
+                                                {% for key,value in item %}
+                                                    {% if key =='total' %}
+                                                        <td>{{ value  |number_format(0, '.', ',') }}</td>
+                                                    {% else %}
+                                                        <td>{{ value }}</td>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+        </div>
+                            <!-- <form action="./{{ cid }}">
                             <input class="btn btn-info" type="submit" name="download" value="Download">
                         </form>-->
 
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+        <style>
+            .col-xs-4{
+                padding:10px;
+                xmargin:10px;
+                border-left:1px #ccc solid;
+                width:200px;
+            }
+            th{
+                font-weight: bold;
+                text-align: center;
+                background:#ccc;
+                border:2px solid;
+            }
+            td{
+                padding:10px;
+                margin:10px;
+                border:1px solid #eee
+            }
+        </style>
+
+
         </div>
-
-
-<style>
-    .col-xs-4{
-        padding:10px;
-        xmargin:10px;
-        border-left:1px #ccc solid;
-        width:200px;
-    }
-    th{
-        font-weight: bold;
-        text-align: center;
-        background:#ccc;
-        border:2px solid;
-    }
-    td{
-        padding:10px;
-        margin:10px;
-        border:1px solid #eee
-    }
-</style>
-
-
-                            </div>
         </div>
         </div>
 

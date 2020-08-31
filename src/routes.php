@@ -46,4 +46,5 @@ $app->group('/admin', function () {
 	$this->get('/report/name/download{cid}', App\Controller\ReportController::class .":name")->setName('report');
 	$this->post('/report/search/{cid}', App\Controller\ReportController::class .":search")->setName('search');
 
+
 })->add(new AuthMiddleware($container));

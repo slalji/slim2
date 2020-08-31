@@ -65,8 +65,6 @@ class ReportController extends Controller
 			return $this->view->render($response, 'report.twig', $page_data);
 		}
 		else{
-			//var_dump($download); die;
-			//@header("Content-Disposition: attachment; filename=export.csv");
 			header('Content-Type: text/csv; charset=utf-8');
 			header('Content-Disposition: attachment; filename=export.csv');
 			$filename = 'export.csv';
@@ -98,25 +96,28 @@ class ReportController extends Controller
 		$this->pdo = $this->container->get('db');
 		$cid = $request->getAttribute('cid');
 		$download = $request->getParam('download');
-		$date = date('Y-m-d');
-
+		$r_date = $request->getParam('r_date');
+		
 		$class = new Report($this->container);
-		$results = json_decode($class->redeemedByReceipt($cid), true);
+		$results = json_decode($class->redeemedByReceipt($r_date), true);
+		$r_dates = json_decode($class->getRedeemedDates(), true);
+//
+		
 		$headings = array_keys($results[0]);
 		if ($download != 'Download'){
+		
 			$page_data = [
 				'page_h1' => 'Reports',
 				'cid' => $cid,
 				'content'=>$results,
+        'r_dates'=>$r_dates,
 				'admin' => $_SESSION['auth'],
 				'time' => date('H:i:s',$_SESSION['time'])
 			];
-			//var_dump($page_data['content']); die;
 			return $this->view->render($response, 'report_receipt.twig', $page_data);
 		}
+		
 		else{
-			//var_dump($download); die;
-			//@header("Content-Disposition: attachment; filename=export.csv");
 			header('Content-Type: text/csv; charset=utf-8');
 			header('Content-Disposition: attachment; filename=export.csv');
 			$filename = 'export.csv';
@@ -171,10 +172,7 @@ class ReportController extends Controller
      */
     public function search(Request $request, Response $response)
     {
-        
-
-
-				$content = [];
+    	  $content = [];
         $this->view = $this->container->get('view');
         $params = $request->getParams();
         $c_id = $params['cid'];
@@ -186,21 +184,62 @@ class ReportController extends Controller
 
             $results = $class->search($needle);
 
-            $results = json_decode($results);
-					//var_dump($results->message); die();
-					$page_data = [
+            $results = json_decode($results,true);
+					 $titles = (array_keys($results['message'][0])); 
+					//echo $results['message'];
+					
+
+					
+
+					 $page_data = [
 						'page_h1' => 'Search Reports',
-						'content'=> $results->message,
+						'content'=> $results['message'],
+						'titles'=> $titles,
+						'cid' => $c_id,
+						'item' => $needle,
 						'admin' => $_SESSION['auth'],
 						'time' => date('H:i:s',$_SESSION['time'])
-					];
-					foreach($results->message as $item =>$val ){
-    echo '<pre>';
-    print_r($item .' : '.$val);
-    echo '</pre>';
-    
-}die;
-					return $this->view->render($response, 'report_search.twig', $page_data);
+					];  
+					 return $this->view->render($response, 'report_search.twig', $page_data);
+
+
+
+				} catch (\Exception $e) {
+            return json_encode(['code' => $e->getCode(), 'message' => $e->getMessage()]);
+        }
+    }
+        public function searchVoucher(Request $request, Response $response)
+    {
+    	  $content = [];
+        $this->view = $this->container->get('view');
+        $params = $request->getParams();
+        $c_id = $params['cid'];
+        //$needle = $request->getParam('needle');
+        $class = new Report($this->container);
+        //MB-5e94aaf7bc32e-YL
+        $needle = explode('-', $request->getParam('needle'));
+
+if (empty($needle))
+	return json_encode(['code' => 404, 'message' => 'Error input type']);
+
+//var_dump($needle); die();
+
+        try {
+        	unset($params['submit']);
+
+            $results = $class->search($needle[1]);
+
+            $results = json_decode($results,true);
+					 $titles = (array_keys($results['message'][0]));
+
+					 $page_data = [
+						'page_h1' => 'Search Reports',
+						'content'=> $results['message'],
+						'titles'=> $titles,
+						'admin' => $_SESSION['auth'],
+						'time' => date('H:i:s',$_SESSION['time'])
+					]; 
+					 return $this->view->render($response, 'report_search.twig', $page_data);
 
 
 

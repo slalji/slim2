@@ -45,18 +45,34 @@ where redeem != 0 and campaign =:cid group by redeem_id order by user_name ASC";
 
 		return json_encode($result);
 	}
-	public function redeemedByReceipt( $cid){
+	public function redeemedByReceipt($date){
 
-		//$sql = "SELECT title, campaign, CONCAT(prefix,'-',voucher,'-',sufix) as qr, sum (vouchers.rate) as total, redeem_date, redeem_id from vouchers JOIN campaigns on vouchers.campaign= campaigns.id where redeem != 0 and campaign =$cid and redeem_id = $rid ORDER BY `campaign` DESC" ;
-		//$sql = "SELECT redeem_date, redeem_id, user_name, user_phone, total from receipt";
-		$sql = "select campaigns.id, campaigns.rate, vouchers.redeem_id, vouchers.redeem_date, count(campaigns.rate) as count ,sum(campaigns.rate) as total from campaigns join vouchers on campaigns.id=vouchers.campaign where vouchers.redeem=1 group by vouchers.redeem_id, campaigns.rate ORDER BY `vouchers`.`redeem_id` DESC";
+		if ($date == null)
+			$sql = "select campaigns.id, campaigns.rate, vouchers.redeem_id, vouchers.redeem_date, count(campaigns.rate) as count ,sum(campaigns.rate) as total, receipt.user_name, receipt.user_phone, receipt.user_comment from campaigns join vouchers on campaigns.id=vouchers.campaign join receipt on vouchers.redeem_id = receipt.redeem_id where vouchers.redeem=1  group by vouchers.redeem_id, campaigns.id ORDER BY `vouchers`.`redeem_id` DESC
+";
+		else
+			$sql = "select campaigns.id, campaigns.rate, vouchers.redeem_id, vouchers.redeem_date, count(campaigns.rate) as count ,sum(campaigns.rate) as total, receipt.user_name, receipt.user_phone, receipt.user_comment from campaigns join vouchers on campaigns.id=vouchers.campaign join receipt on vouchers.redeem_id = receipt.redeem_id where vouchers.redeem=1 && vouchers.redeem_date = :date group by vouchers.redeem_id, campaigns.id ORDER BY `vouchers`.`redeem_id` DESC
+";
+
+
 		$stmt = $this->conn->prepare( $sql );
-		$stmt->bindParam( ":cid", $cid, PDO::PARAM_INT );
+		$stmt->bindParam( ":date", $date, PDO::PARAM_STR );
 		$stmt->execute();
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+	return json_encode($result);
+	}
+public function getRedeemedDates(){
+
+		$sql = "select distinct vouchers.redeem_date from campaigns join vouchers on campaigns.id=vouchers.campaign where vouchers.redeem=1 order by vouchers.redeem_date DESC";
+		$stmt = $this->conn->prepare( $sql );
+		$stmt->execute();
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		
+
 		return json_encode($result);
 	}
+
 	private function _pdoBindArray(&$poStatement, &$paArray)
     {
         foreach ($paArray as $k => $v) {
@@ -161,14 +177,15 @@ where redeem != 0 and campaign =:cid group by redeem_id order by user_name ASC";
 	public function searchUser($needle){
 
 		//$cid = $params['cid'];
-		$search = $needle;
+		//$search = $needle;
+
 
 		try{
 			$sql = "select CONCAT(prefix,'-',voucher,'-',sufix) as qr, campaigns.rate, receipt.redeem_id, receipt.user_name, receipt.user_phone, receipt.user_comment from vouchers join receipt on receipt.redeem_id = vouchers.redeem_id join campaigns on vouchers.campaign= campaigns.id where vouchers.campaign = :cid && (receipt.redeem_id like :search || receipt.user_name  like :search || receipt.user_phone like :search) group by vouchers.redeem_id";
 			$stmt = $this->conn->prepare($sql);
 
 			$stmt->bindParam( ":cid", $cid, PDO::PARAM_INT );
-			$stmt->bindParam( ":search", $search, PDO::PARAM_STR );
+			$stmt->bindParam( ":search", $needle, PDO::PARAM_STR );
 			$stmt->execute();
 
 
@@ -190,21 +207,30 @@ where redeem != 0 and campaign =:cid group by redeem_id order by user_name ASC";
 
 		//$cid = $params['cid'];
 		$search = $needle;
+		if (stripos($needle, "-")>0){
+			$exp = explode('-', $needle);
+
+			$search = $exp[1];
+			$sql = "select concat (campaigns.prefix,'-', vouchers.voucher,'-',campaigns.sufix)as qrcode, vouchers.redeem_id as receipt , receipt.user_name as name, receipt.user_phone, vouchers.redeem_date  from vouchers join campaigns on vouchers.campaign= campaigns.id left join receipt on receipt.redeem_id = vouchers.redeem_id where vouchers.voucher = :search";
+
+		}
+		else
+					$sql = "select campaigns.id, campaigns.rate, concat (campaigns.prefix,'-', vouchers.voucher,'-',campaigns.sufix)as qrcode, vouchers.redeem_id as receipt , receipt.user_name as name, receipt.user_phone, vouchers.redeem_date  from vouchers join campaigns on vouchers.campaign= campaigns.id left join receipt on receipt.redeem_id = vouchers.redeem_id where vouchers.redeem_id = :search";
 
 		try{
-			$sql = "select * from vouchers join campaigns on vouchers.campaign= campaigns.id where vouchers.id = :search";
+	
 			$stmt = $this->conn->prepare($sql);
 
 			//$stmt->bindParam( ":cid", $cid, PDO::PARAM_INT );
 			$stmt->bindParam( ":search", $search, PDO::PARAM_STR );
 			$stmt->execute();
 
-
-
 			$result = $stmt->fetchAll( PDO::FETCH_ASSOC );
 			//$result = $stmt->fetchAll();
+			//var_dump($search);
+//var_dump(json_encode($result)); die;
+			//$result = $result[0];
 
-			$result = $result[0];
 
 			return json_encode(['code' => 200, 'message' => $result]);
 		}

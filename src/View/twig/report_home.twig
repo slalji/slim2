@@ -66,8 +66,9 @@
 
                     </div>
                     <form action="./search/{{cid}}" method="post">
-                                <label for="Search" class="col-sm-12 col-form-label">Search receipt by ID</label>
+                                <label for="Search" class="col-sm-12 col-form-label">Search Receipt or QR-Code</label>
                                 <input type="text" required name="needle">
+                                 <input type="hidden" name="cid" id="cid" value="{{ cid }}">
                                 <input type="submit" name="submit">
                                 </form>
                 </div>

@@ -1,0 +1,111 @@
+
+{% block head %}
+{% include "_base.twig" %}
+{% endblock %}
+
+{% block body %}
+
+    {% block contents %}
+        <div class="container">
+
+            <div class="card-header">
+                {% include "partials/nav.twig" %}
+                <span style="color:green"><h1>{{ page_h1 }}</h1></span>
+                <a href="/admin/report/{{ cid }}">Back to Reports</a>
+               <form action="./{{ cid }}">
+                            <input class="btn btn-info" type="submit" name="download" value="Download">
+                        </form>
+            </div>
+
+        <div class="clear"><p></p></div>
+        <div class="form-group row">
+            <div class="col-sm-12" >
+
+                <div class="card">
+                    <div class="card-body row">
+                        <form id="form-search" name="form-search" action="./{{ cid }}/results" method="get">
+                            <div class="form-group ">
+                                <!--<label for="Name" class="col-sm-10 col-form-label">Search Campaign {{ title }}</label>
+                                <div class="col-sm-10">
+                                    <div id="print" name="campaign" class="print form-control">
+
+                                            <label>By Receipt No., Name, Phone</label>
+
+                                            <input type="hidden" name="cid" id="cid" value="{{ cid }}">
+                                            <input type="text" name="search" id="search">
+
+                                            <input class="btn btn-info" type="submit" value="Search" name="submit">
+
+
+                                    </div>
+
+                                </div>
+                                -->
+                                <label>{{ title }}</label>
+                                <table>
+                                    <th>QR</th>
+                                    <th>Title</th>
+                                    <th>id</th>
+                                    <th>Total</th>
+                                    <th>Rate</th>
+                                    <th>Date</th>
+                                    <th>Receipt</th>
+
+                                    <th>Name</th>
+                                    <th>Mobile</th>
+                                    <th>Comment</th>
+
+                                    {% for item in content %}
+                                    <tr>
+                                        {% for key,value in item %}
+                                            {% if key =='total' %}
+                                                <td>{{ value  |number_format(0, '.', ',') }}</td>
+                                            {% else %}
+                                                <td>{{ value }}</td>
+                                            {% endif %}
+                                    {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                                </table>
+                            </div>
+
+                        </form>
+                        <form action="./{{ cid }}">
+                            <input class="btn btn-info" type="submit" name="download" value="Download">
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+<style>
+    .col-xs-4{
+        padding:10px;
+        xmargin:10px;
+        border-left:1px #ccc solid;
+        width:200px;
+    }
+    th{
+        font-weight: bold;
+        text-align: center;
+        background:#ccc;
+        border:2px solid;
+    }
+    td{
+        padding:10px;
+        margin:10px;
+        border:1px solid #eee
+    }
+</style>
+
+
+                            </div>
+        </div>
+        </div>
+
+    {% endblock %}
+{% endblock %}

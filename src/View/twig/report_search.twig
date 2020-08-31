@@ -11,7 +11,8 @@
 
             <div class="card-header">
                 <span style="color:green"><h1>{{ page_h1 }}</h1></span>
-                Report for Search item: {{ item }}
+                 <a href="/admin/report/{{ cid }}">Back to Reports</a>
+                <p>Report for Search item: {{ item }}
             </div>
 
         <div class="clear"><p></p></div>
@@ -24,17 +25,21 @@
                             <div class="form-group row">
 
                                 <div class="col-sm-12">
-
-                                            
-                                   
-                                        {%for items in content| keys %}
-                                            <ul>
-                                                <li><b>{{key}}</b> {{ content }}</li>
-                                            </ul>
+                                    <table border="1">
+                                        {%for title in titles%}
+                                        <th>{{title}}</th>
                                         {%endfor%}
+
+
                                     
-
-
+                                    {%for items in content %}
+                                    <tr>
+                                      {%for item in items %} 
+                                       <td>{{item}}</td>
+                                      {%endfor%} 
+                                  </tr>
+                                    {%endfor%} 
+                                    </table>
 
                                 </div>
                             </div>
@@ -61,6 +66,10 @@
         text-align: center;
         background:#ccc;
         border:2px solid;
+    }
+    td{
+        border:2px solid;
+        padding: 5px;
     }
 </style>
 
