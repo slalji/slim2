@@ -1,7 +1,7 @@
 src/config.php
-src/settings.php
 composer.lock
 vendor
 .idea
 .well-known
 public/error_log
+slim2
