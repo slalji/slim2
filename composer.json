@@ -6,7 +6,7 @@
         "monolog/monolog": "^1.17",
         "robmorgan/phinx": "^0.5.1",
         "slim/twig-view": "^2.5",
-        "slim/psr7": "^0.6",
+        "slim/psr7": "^1.4",
         "tecnickcom/tc-lib-barcode": "^1.15"
     },
     "autoload": {
